@@ -5,7 +5,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        '600': '600px',
+        '650': '650px',
+        '700': '700px',
+      },
+      padding: {
+        'py-px-4': 'padding-top: 10px',
+      }
+    },
   },
   plugins: [],
 }

@@ -5,8 +5,8 @@ export default function Popular() {
   return (
     <>
       <Header>
-        Popular
       </Header>
+        Popular
     </>
   )
 
