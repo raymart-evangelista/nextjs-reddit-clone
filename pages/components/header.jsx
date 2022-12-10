@@ -10,7 +10,7 @@ import RedditLogo from "./svg/reddit-logo2"
 export default function Header({ children }) {
   return (
     <div className="fixed w-full border-b-[1px]">
-      <div className="flex h-12 p-1 items-center justify-between mx-2">
+      <div className="flex h-12 p-1 items-center justify-between mx-4">
         <div className="flex gap-2">
           <RedditIcon />
           <RedditLogo />
