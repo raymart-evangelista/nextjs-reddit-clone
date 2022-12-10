@@ -13,6 +13,10 @@ module.exports = {
       },
       padding: {
         'py-px-4': 'padding-top: 10px',
+      },
+      colors: {
+        'reddit-orange': '#ff5700',
+        'orangered': '#ff4500'
       }
     },
   },
