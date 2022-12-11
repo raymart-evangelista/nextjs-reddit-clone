@@ -10,6 +10,7 @@ module.exports = {
         '600': '600px',
         '650': '650px',
         '700': '700px',
+        '270': '270px',
       },
       padding: {
         'py-px-4': 'padding-top: 10px',
