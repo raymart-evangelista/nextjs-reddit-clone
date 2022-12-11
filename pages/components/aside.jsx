@@ -8,6 +8,7 @@ import WebSvg from './svg/web'
 import TvSvg from './svg/tv'
 import StarSvg from './svg/star'
 import ThreeDotsSvg from './svg/three-dots'
+import Button from './button'
 
 
 export default function Aside({ children }) {
@@ -15,11 +16,10 @@ export default function Aside({ children }) {
   const topicsClass = 'text-gray-500 font-bold text-sm'
 
   return (
-    <div className="border border-red-500 w-270">
-      <div className="border border-green-500 w-fit">
+    <div className="w-270 h-screen flex shadow-[0_10px_20px_-5px_rgba(115,115,115,0.75)] shadow-[10px_0_20px_-5px_rgba(115,115,115,0.75)]">
+      <div className="w-full flex flex-col justify-between">
         <div className="flex flex-col">
           <h1 className={topicsClass}>FEEDS</h1>
-
           <div className='flex'>
             <HomeSvg />
             <h1>Home</h1>
@@ -64,8 +64,9 @@ export default function Aside({ children }) {
             <h1>More topics</h1>
           </div>
         </div>
-        <div className="flex flex-col">
-          <h1></h1>
+        <div className="flex flex-col border-t-[1px] m-6 gap-5">
+          <h1 className='mt-3'>Create an account to follow your favorite communities and start taking part in conversations.</h1>
+          <Button text="Join Reddit" bgColor="bg-blue-500" textColor="text-white"/>
         </div>
       </div>
       {children}
