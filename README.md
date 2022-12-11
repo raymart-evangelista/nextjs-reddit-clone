@@ -1,8 +1,9 @@
 ## Resources
 - [React SVGR](https://react-svgr.com/playground/?icon=true)
-- icons: [
-  - [ionic](https://ionic.io/ionicons)
+- icons:
+  - [ionicons](https://ionic.io/ionicons)
   - [feathericons](https://feathericons.com/)
+  - [bootstrap icons](https://icons.getbootstrap.com/)
 - [Extending TailwindCSS classes](https://stackoverflow.com/questions/65491795/how-can-i-specify-exactly-600px-width-in-tailwind-css)
 
 ## Getting Started
