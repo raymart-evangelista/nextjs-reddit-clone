@@ -16,9 +16,8 @@ export default function Aside({ children }) {
   const topicsClass = 'text-gray-500 font-bold text-sm'
 
   return (
-    <div className='fixed flex flex-col overflow-hidden shrink-0 border-4 border-green-500'>
-      {/* <div className='top-left shrink-0'>Top left header</div> */}
-      <div className="bottom grow-1 overflow-y-auto w-270 pb-16 shadow-[0_2px_4px_-1px_#eee] bg-white">
+    <div className='z-30 h-full fixed shadow-[0_2px_4px_-1px_#eee] bg-white border border-red-500'>
+      <div className="bottom grow-1 overflow-y-auto w-270 pb-16 ">
         <div className="w-full flex flex-col justify-between">
           <div className="flex flex-col">
             <h1 className={topicsClass}>FEEDS</h1>
