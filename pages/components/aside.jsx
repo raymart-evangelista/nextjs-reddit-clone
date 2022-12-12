@@ -18,9 +18,9 @@ export default function Aside({ children }) {
 
   return (
     <div className='z-30 h-full fixed shadow-[0_2px_4px_-1px_#eee] bg-white'>
-      <div className="bottom grow-1 overflow-y-auto w-270 pb-16 ">
+      <div className="bottom grow-1 overflow-y-auto w-270 pb-16 p-5">
         <div className="w-full flex flex-col justify-between border border-green-500">
-          <div className="flex flex-col ml-4 mt-2 gap-2 ">
+          <div className="flex flex-col">
             <h1 className={topicsClass}>FEEDS</h1>
             <div className='flex'>
               <HomeSvg />
@@ -37,49 +37,49 @@ export default function Aside({ children }) {
               <h1>r/nextjs</h1>
             </div>
             <h1 className={topicsClass}>Topics</h1>
-            <div className='flex justify-between mx-2'>
+            <div className='flex justify-between'>
               <div className='flex gap-2'>
                 <GameControllerSvg />
                 <h1>Gaming</h1>
               </div>
               <ChevronDownOutline />
             </div>
-            <div className='flex justify-between mx-2'>
+            <div className='flex justify-between'>
               <div className='flex'>
                 <BaseballSvg />
                 <h1>Sports</h1>
               </div>
               <ChevronDownOutline />
             </div>
-            <div className='flex justify-between mx-2 items-center'>
+            <div className='flex justify-between items-center'>
               <div className='flex gap-2 items-center'>
                 <GraphSvg />
-                <h1 className='truncate whitespace-nowrap overflow-hidden border border-red-500 '>Business, Economics, and Finance</h1>
+                <h1 className='border border-red-500 '>Business, Economics, and Finance</h1>
               </div>
               <ChevronDownOutline />
             </div>
-            <div className='flex justify-between mx-2 items-center'>
+            <div className='flex justify-between items-center'>
               <div className='flex gap-2 items-center'>
                 <WebSvg />
                 <h1>Crypto</h1>
               </div>
               <ChevronDownOutline />
             </div>
-            <div className='flex justify-between mx-2 items-center'>
+            <div className='flex justify-between items-center'>
               <div className='flex gap-2 items-center'>
                 <TvSvg />
                 <h1>Television</h1>
               </div>
               <ChevronDownOutline />
             </div>
-            <div className='flex justify-between mx-2 items-center'>
+            <div className='flex justify-between items-center'>
               <div className='flex gap-2 items-center'>
                 <StarSvg />
                 <h1>Celebrity</h1>
               </div>
               <ChevronDownOutline />
             </div>
-            <div className='flex justify-between mx-2 items-center'>
+            <div className='flex justify-between items-center'>
               <div className='flex gap-2 items-center'>
                 <ThreeDotsSvg />
                 <h1>More topics</h1>
@@ -87,7 +87,7 @@ export default function Aside({ children }) {
               <ChevronDownOutline />
             </div>
           </div>
-          <div className="flex flex-col border-t-[1px] m-6 gap-5">
+          <div className="flex flex-col border-t-[1px]">
             <h1 className='mt-3'>Create an account to follow your favorite communities and start taking part in conversations.</h1>
             <Button text="Join Reddit" bgColor="bg-blue-500" textColor="text-white"/>
           </div>
