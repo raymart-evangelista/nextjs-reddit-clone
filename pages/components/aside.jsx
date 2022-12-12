@@ -9,6 +9,7 @@ import TvSvg from './svg/tv'
 import StarSvg from './svg/star'
 import ThreeDotsSvg from './svg/three-dots'
 import Button from './button'
+import ChevronDownOutline from './svg/chevron-down-outline'
 
 
 export default function Aside({ children }) {
@@ -16,10 +17,10 @@ export default function Aside({ children }) {
   const topicsClass = 'text-gray-500 font-bold text-sm'
 
   return (
-    <div className='z-30 h-full fixed shadow-[0_2px_4px_-1px_#eee] bg-white border border-red-500'>
+    <div className='z-30 h-full fixed shadow-[0_2px_4px_-1px_#eee] bg-white'>
       <div className="bottom grow-1 overflow-y-auto w-270 pb-16 ">
-        <div className="w-full flex flex-col justify-between">
-          <div className="flex flex-col">
+        <div className="w-full flex flex-col justify-between border border-green-500">
+          <div className="flex flex-col ml-4 mt-2 gap-2 ">
             <h1 className={topicsClass}>FEEDS</h1>
             <div className='flex'>
               <HomeSvg />
@@ -35,34 +36,55 @@ export default function Aside({ children }) {
               <h1>r/rails</h1>
               <h1>r/nextjs</h1>
             </div>
-            <h1 className={topicsClass}>topics</h1>
-            <div className='flex'>
-              <GameControllerSvg />
-              <h1>Gaming</h1>
+            <h1 className={topicsClass}>Topics</h1>
+            <div className='flex justify-between mx-2'>
+              <div className='flex gap-2'>
+                <GameControllerSvg />
+                <h1>Gaming</h1>
+              </div>
+              <ChevronDownOutline />
             </div>
-            <div className='flex'>
-              <BaseballSvg />
-              <h1>Sports</h1>
+            <div className='flex justify-between mx-2'>
+              <div className='flex'>
+                <BaseballSvg />
+                <h1>Sports</h1>
+              </div>
+              <ChevronDownOutline />
             </div>
-            <div className='flex'>
-              <GraphSvg />
-              <h1>Business, Economics, and Finance</h1>
+            <div className='flex justify-between mx-2 items-center'>
+              <div className='flex gap-2 items-center'>
+                <GraphSvg />
+                <h1 className='truncate whitespace-nowrap overflow-hidden border border-red-500 '>Business, Economics, and Finance</h1>
+              </div>
+              <ChevronDownOutline />
             </div>
-            <div className='flex'>
-              <WebSvg />
-              <h1>Crypto</h1>
+            <div className='flex justify-between mx-2 items-center'>
+              <div className='flex gap-2 items-center'>
+                <WebSvg />
+                <h1>Crypto</h1>
+              </div>
+              <ChevronDownOutline />
             </div>
-            <div className='flex'>
-              <TvSvg />
-              <h1>Television</h1>
+            <div className='flex justify-between mx-2 items-center'>
+              <div className='flex gap-2 items-center'>
+                <TvSvg />
+                <h1>Television</h1>
+              </div>
+              <ChevronDownOutline />
             </div>
-            <div className='flex'>
-              <StarSvg />
-              <h1>Celebrity</h1>
+            <div className='flex justify-between mx-2 items-center'>
+              <div className='flex gap-2 items-center'>
+                <StarSvg />
+                <h1>Celebrity</h1>
+              </div>
+              <ChevronDownOutline />
             </div>
-            <div className='flex'>
-              <ThreeDotsSvg />
-              <h1>More topics</h1>
+            <div className='flex justify-between mx-2 items-center'>
+              <div className='flex gap-2 items-center'>
+                <ThreeDotsSvg />
+                <h1>More topics</h1>
+              </div>
+              <ChevronDownOutline />
             </div>
           </div>
           <div className="flex flex-col border-t-[1px] m-6 gap-5">

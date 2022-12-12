@@ -18,7 +18,7 @@ module.exports = {
       colors: {
         'reddit-orange': '#ff5700',
         'orangered': '#ff4500',
-        'aliceblue': '#dae0e6',
+        'reddit-blue': '#dae0e6',
       }
     },
   },

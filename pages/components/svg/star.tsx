@@ -3,8 +3,8 @@ import * as React from "react"
 const StarSvg = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
+    width="1rem"
+    height="1rem"
     fill="currentColor"
     className="bi bi-star"
     {...props}
