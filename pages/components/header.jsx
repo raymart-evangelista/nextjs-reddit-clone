@@ -9,8 +9,8 @@ import RedditLogo from "./svg/reddit-logo2"
 
 export default function Header({ children }) {
   return (
-    <div className="fixed w-full border-b-[1px]">
-      <div className="flex h-12 p-1 items-center justify-between mx-4">
+    <div className="fixed top-0 w-full border-b-[1px]">
+      <div className="flex h-12 p-1 items-center justify-between px-4 bg-white">
         <div className="flex gap-2">
           <RedditIcon />
           <RedditLogo />
