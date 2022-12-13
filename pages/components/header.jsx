@@ -6,6 +6,7 @@ import PersonOutline from "./svg/person-outline"
 import ChevronDownOutline from "./svg/chevron-down-outline"
 import RedditIcon from "./svg/reddit-icon"
 import RedditLogo from "./svg/reddit-logo2"
+import Dropdown from "./dropdown"
 
 export default function Header({ children }) {
   return (
@@ -26,10 +27,11 @@ export default function Header({ children }) {
             <Button text="Log In" bgColor="bg-orangered" textColor="text-white" />
           </div>
           <div className="flex items-center">
-            <div className="flex border border-white hover:border-gray-200 px-2 py-[3px] items-center rounded-md">
+            {/* <div className="flex border border-white hover:border-gray-200 px-2 py-[3px] items-center rounded-md">
               <PersonOutline />
               <ChevronDownOutline />
-            </div>
+            </div> */}
+            <Dropdown />
           </div>
         </div>
       </div>
