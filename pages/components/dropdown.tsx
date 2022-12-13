@@ -2,10 +2,17 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from 'react'
 import PersonOutline from "./svg/person-outline"
 import ChevronDownOutline from "./svg/chevron-down-outline"
+import MoonSvg from "./svg/moon";
+import InfoCircleSvg from "./svg/info-circle";
+import QuestionCircleSvg from "./svg/question-circle";
+import CardChecklistSvg from "./svg/card-checklist";
+import MegaphoneSvg from "./svg/megaphone";
+import BoxArrowRightSvg from "./svg/box-arrow-right";
 
 export default function Dropdown() {
   return (
     <Menu as="div" className="relative inline-block text-left">
+      {/* Menu Button */}
       <Menu.Button>
         <div className="flex items-center">
           <div className="flex border border-white hover:border-gray-200 px-2 py-[3px] items-center rounded-md">
@@ -14,6 +21,7 @@ export default function Dropdown() {
           </div>
         </div>
       </Menu.Button>
+      {/* Menu Items Transition */}
       <Transition
           as={Fragment}
           enter="transition ease-out duration-100"
@@ -27,9 +35,10 @@ export default function Dropdown() {
         <Menu.Item>
         {({ active }) => (
           <a
-            className={`${active && 'bg-blue-500 text-white'} p-3`}
+            className={`flex ${active && 'bg-blue-500 text-white'} p-3`}
             href="/account-settings"
           >
+            <MoonSvg />
             Dark Mode
           </a>
         )}
@@ -40,6 +49,7 @@ export default function Dropdown() {
             className={`${active && 'bg-blue-500 text-white'} p-3`}
             href="/account-settings"
           >
+            <QuestionCircleSvg />
             Help Center
           </a>
         )}
@@ -50,6 +60,7 @@ export default function Dropdown() {
             className={`${active && 'bg-blue-500 text-white'} p-3`}
             href="/account-settings"
           >
+            <InfoCircleSvg />
             More
           </a>
         )}
@@ -60,6 +71,7 @@ export default function Dropdown() {
             className={`${active && 'bg-blue-500 text-white'} p-3`}
             href="/account-settings"
           >
+            <CardChecklistSvg />
             Terms & Policies
           </a>
         )}
@@ -70,6 +82,7 @@ export default function Dropdown() {
             className={`${active && 'bg-blue-500 text-white'} p-3`}
             href="/account-settings"
           >
+            <MegaphoneSvg />
             Advertise on Reddit
           </a>
         )}
@@ -80,6 +93,7 @@ export default function Dropdown() {
             className={`${active && 'bg-blue-500 text-white'} p-3 rounded-b-md border-t-[1px]`}
             href="/account-settings"
           >
+            <BoxArrowRightSvg />
             Log In / Sign Up
           </a>
         )}
