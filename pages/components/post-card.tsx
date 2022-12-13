@@ -8,13 +8,13 @@ import ThreeDotsSvg from "./svg/three-dots"
 
 export default function PostCard({}) {
   return (
-    <div className="flex border-[1px] border-gray-300 w-fit rounded-sm bg-slate-50 hover:border-black">
+    <div className="flex border-[1px] border-gray-300 w-fit rounded-lg bg-slate-50 hover:border-black">
       <div className="arrows-area w-fit flex flex-col items-center p-1 pt-3">
         <ArrowUpSquare />
         <p className="font-semibold text-xs">21.9K</p>
         <ArrowDownSquare />
       </div>
-      <div className="main-content bg-white">
+      <div className="main-content bg-white rounded-tr-lg rounded-br-lg">
         <div className="flex justify-between items-center mx-4 my-2">
           <div className="flex gap-2">
             <div className="font-bold text-xs">r/formuladank</div>
