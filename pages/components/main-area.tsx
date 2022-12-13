@@ -1,6 +1,6 @@
 export default function MainArea() {
   return (
-    <div className="fixed left-[270px] h-full w-full bg-reddit-blue">
+    <div className="fixed left-[270px] h-full w-full bg-reddit-bg-blue">
       <div className="">
         <div className="flex flex-col border border-red-500">
           <h1>trending today</h1>

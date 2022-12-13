@@ -20,7 +20,7 @@ export default function Aside({ children }) {
   return (
     <div className='z-30 h-full fixed shadow-[0_2px_4px_-1px_#eee] bg-white'>
       <div className="bottom grow-1 overflow-y-auto w-270 pb-16">
-        <div className="w-full flex flex-col justify-between border border-green-500">
+        <div className="h-[calc(100vh-40px)] flex flex-col justify-between border border-green-500">
           <div className="flex flex-col">
             <h1 className={topicsClass}>FEEDS</h1>
             <div className='flex gap-2 items-center px-4 py-2 hover:bg-gray-100'>
@@ -94,9 +94,9 @@ export default function Aside({ children }) {
               <ChevronDownOutline />
             </div>
           </div>
-          <div className="flex flex-col border-t-[1px]">
-            <h1 className='mt-3'>Create an account to follow your favorite communities and start taking part in conversations.</h1>
-            <Button text="Join Reddit" bgColor="bg-blue-500" textColor="text-white"/>
+          <div className="flex flex-col border-t-[1px] m-8 gap-4">
+            <h1 className='mt-4 text-sm font-[350]'>Create an account to follow your favorite communities and start taking part in conversations.</h1>
+            <Button text="Join Reddit" bgColor="bg-reddit-button-blue" textColor="text-white"/>
           </div>
         </div>
       </div>
