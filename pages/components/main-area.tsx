@@ -7,7 +7,7 @@ export default function MainArea() {
     <div className="fixed left-[270px] h-[calc(100vh-48px)] w-[calc(100vw-270px)] overflow-x-hidden overflow-y-scroll bg-reddit-bg-blue">
       <div className="">
         <div className="flex flex-col items-center mt-2 gap-2">
-          <h1>trending today</h1>
+          <h1 className="font-semibold text-sm">Trending today</h1>
           <div className="flex flex-row gap-3 justify-center">
             <TrendingCard 
               title="Hedge Fund Housing Bill" desc="Senator Merkley Introduces Legislation to Ban Hedge Fund Ownership of Residential Housing"
@@ -34,7 +34,10 @@ export default function MainArea() {
               background="https://www.dexerto.com/_next/image/?url=https%3A%2F%2Feditors.dexerto.com%2Fwp-content%2Fuploads%2F2022%2F12%2F12%2Fhouse-of-the-dragon-paddy-considine.jpg&w=640&q=75" />
           </div>
         </div>
-        <div className="flex flex-col gap-2 justify-center items-center mt-8 mb-8">
+        <div className="flex flex-col items-center mt-4">
+          <h1 className="font-semibold text-sm">Popular posts</h1>
+        </div>
+        <div className="flex flex-col gap-2 justify-center items-center mt-4 mb-8">
           <PostCard />
           <PostCard />
           <PostCard />
