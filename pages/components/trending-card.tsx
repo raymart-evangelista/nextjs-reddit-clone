@@ -25,14 +25,7 @@ export default function TrendingCard({ title, desc, subreddit, url, background }
     handleBackground()
   }, [bgImageStyle])
 
-  return (    
-    // <a href={url}>
-    //   <div className="bg-fixed" style={{ backgroundImage: bgImageStyle }}>
-    //     <h1>{title}</h1>
-    //     <h2>{desc}</h2>
-    //     <p>{subreddit}</p>
-    //   </div>
-    // </a>
+  return (
     <a href={url}>
       <div className="p-2 flex flex-col justify-end gap-2 bg-cover bg-center bg-orangered w-64 h-48 rounded-lg" style={{ backgroundImage: `url(${background})` }}>
         <h1 className="text-white font-semibold">{title}</h1>

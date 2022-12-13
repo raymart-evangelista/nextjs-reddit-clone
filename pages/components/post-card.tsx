@@ -1,40 +1,49 @@
+import ArrowUpSquare from "./svg/arrow-up-square"
+import ArrowDownSquare from "./svg/arrow-down-square"
+import Button from './button'
+import ChatSvg from "./svg/chat"
+import Arrow90DegRight from "./svg/arrow-90deg-right"
+import Bookmark from "./bookmark"
+import ThreeDotsSvg from "./svg/three-dots"
+
 export default function PostCard({}) {
   return (
-    <>
-      <div className="arrows-area">
-        <div className="up arrow"></div>
-        <p>21.9K</p>
-        <div className="down arrow"></div>
+    <div className="">
+      <div className="arrows-area w-fit flex flex-col items-center border-4 border-red-500">
+        <ArrowUpSquare />
+        <p className="font-semibold text-xs">21.9K</p>
+        <ArrowDownSquare />
       </div>
       <div className="main-content">
         <div className="top-area justify between">
           <div>
-            <div className="subreddit name"></div>
-            <div className="posted by ___ hours ago"></div>
+            <div className="subreddit name">r/formuladank</div>
+            <div className="posted by ___ hours ago">Posted by u/formuladanker123 10 hours ago</div>
           </div>
-          <div className="join button"></div>
+          <Button text="Join" bgColor="bg-reddit-button-blue" textColor="text-white" />
         </div>
         <div className="bottom content of main area">
-          <div className="title"></div>
-          <div className="photo if photo"></div>
+          <h1>These guys take zero Ws, they're Illiams now</h1>
+          <div className="photo if theres a photo">
+            <img className="max-h-[480px]" src="https://i.redd.it/i277m1nkai5a1.png" alt="" />
+          </div>
           <div className="bottom content of bottom content">
             <div className="comments">
-              <div className="icon"></div>
-              <div className="comment stats"></div>
+              <ChatSvg />
+              <p>1.9K Comments</p>
             </div>
             <div className="share">
-              <div className="icon"></div>
-              <div className="share text"></div>
+              <Arrow90DegRight />
+              <p>Share</p>
             </div>
             <div className="save">
-              <div className="icon"></div>
-              <div className="save text"></div>
+              <Bookmark />
+              <p>Save</p>
             </div>
-            <div className="three dots"></div>
-
+            <ThreeDotsSvg />
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
