@@ -20,7 +20,7 @@ export default function Aside({ children }) {
   return (
     <div className='z-30 h-full fixed shadow-[0_2px_4px_-1px_#eee] bg-white'>
       <div className="bottom grow-1 overflow-y-auto w-270 pb-16">
-        <div className="h-[calc(100vh-40px)] flex flex-col justify-between border border-green-500">
+        <div className="h-[calc(100vh-40px)] flex flex-col justify-between">
           <div className="flex flex-col">
             <h1 className={topicsClass}>FEEDS</h1>
             <div className='flex gap-2 items-center px-4 py-2 hover:bg-gray-100'>
