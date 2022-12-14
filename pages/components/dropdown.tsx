@@ -35,10 +35,10 @@ export default function Dropdown() {
         <Menu.Item>
         {({ active }) => (
           <a
-            className={`flex ${active && 'bg-blue-500 text-white'} p-3`}
+            className={`flex items-center ${active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
             href="/account-settings"
           >
-            <MoonSvg />
+            <MoonSvg className="overflow-visible" />
             Dark Mode
           </a>
         )}
@@ -46,10 +46,10 @@ export default function Dropdown() {
         <Menu.Item>
         {({ active }) => (
           <a
-            className={`${active && 'bg-blue-500 text-white'} p-3`}
+            className={`flex items-center ${active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
             href="/account-settings"
           >
-            <QuestionCircleSvg />
+            <QuestionCircleSvg className="overflow-visible" />
             Help Center
           </a>
         )}
@@ -57,10 +57,10 @@ export default function Dropdown() {
         <Menu.Item>
         {({ active }) => (
           <a
-            className={`${active && 'bg-blue-500 text-white'} p-3`}
+            className={`flex items-center ${active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
             href="/account-settings"
           >
-            <InfoCircleSvg />
+            <InfoCircleSvg className="overflow-visible" />
             More
           </a>
         )}
@@ -68,10 +68,10 @@ export default function Dropdown() {
         <Menu.Item>
         {({ active }) => (
           <a
-            className={`${active && 'bg-blue-500 text-white'} p-3`}
+            className={`flex items-center ${active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
             href="/account-settings"
           >
-            <CardChecklistSvg />
+            <CardChecklistSvg className="overflow-visible" />
             Terms & Policies
           </a>
         )}
@@ -79,10 +79,10 @@ export default function Dropdown() {
         <Menu.Item>
         {({ active }) => (
           <a
-            className={`${active && 'bg-blue-500 text-white'} p-3`}
+            className={`flex items-center ${active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
             href="/account-settings"
           >
-            <MegaphoneSvg />
+            <MegaphoneSvg className="overflow-visible" />
             Advertise on Reddit
           </a>
         )}
@@ -90,10 +90,10 @@ export default function Dropdown() {
         <Menu.Item>
         {({ active }) => (
           <a
-            className={`${active && 'bg-blue-500 text-white'} p-3 rounded-b-md border-t-[1px]`}
+            className={`flex items-center ${active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm rounded-b-md border-t-[1px] font-[450]`}
             href="/account-settings"
           >
-            <BoxArrowRightSvg />
+            <BoxArrowRightSvg className="overflow-visible" />
             Log In / Sign Up
           </a>
         )}
