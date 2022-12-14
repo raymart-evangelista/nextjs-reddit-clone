@@ -37,7 +37,7 @@ export default function Dropdown() {
             <a
               className={`flex items-center 
               ${disabled ? "text-gray-400" : active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
-              href="/account-settings"
+              href="/dark-mode"
             >
               <MoonSvg className="overflow-visible" />
               Dark Mode
