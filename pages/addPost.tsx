@@ -4,15 +4,17 @@ import axios from 'axios'
 export default function NewPost() {
 
   const [title, setTitle] = useState('')
-  const [desc, setDesc] = useState('')
+  const [description, setDescription] = useState('')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    console.log(event.currentTarget.elements)
-    console.log(event.currentTarget.elements[0])
-    console.log(title)
-    console.log(desc)
+    // console.log(event.currentTarget.elements)
+    // console.log(event.currentTarget.elements[0])
+    // console.log(title)
+    // console.log(desc)
+    const res = await axios.post('/api/posts', { title, description })
+    console.log(res.data)
   }
 
   return (
@@ -26,12 +28,12 @@ export default function NewPost() {
         onChange={event => setTitle(event.target.value)} 
         required />
 
-      <label htmlFor="desc">Description</label>
+      <label htmlFor="description">Description</label>
       <textarea 
-        id="desc" 
-        name="desc"
-        value={desc}
-        onChange={event => setDesc(event.target.value)} 
+        id="description" 
+        name="description"
+        value={description}
+        onChange={event => setDescription(event.target.value)} 
         required />
 
       <button type="submit">Submit</button>
