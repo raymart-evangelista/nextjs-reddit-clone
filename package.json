@@ -6,13 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:dev": "npx dotenv -e .env.local -- prisma migrate dev",
+    "db:push": "npx dotenv -e .env.local -- prisma db push",
+    "migrate:reset": "npx dotenv -e .env.local -- prisma migrate reset",
+    "db:seed": "npx dotenv -e .env.local -- prisma db seed",
+    "prisma:generate": "npx dotenv -e .env.local -- prisma generate",
+    "prisma:studio": "npx dotenv -e .env.local -- prisma studio",
+    "production:build": "npx prisma generate && npx prisma migrate deploy && next build"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.5",
+    "@prisma/client": "^4.7.1",
     "@types/node": "18.11.12",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
+    "axios": "^1.2.1",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "next": "13.0.6",
@@ -22,7 +31,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "dotenv-cli": "^6.0.0",
     "postcss": "^8.4.19",
+    "prisma": "^4.7.1",
     "tailwindcss": "^3.2.4"
   }
 }

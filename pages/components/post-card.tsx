@@ -23,7 +23,7 @@ export default function PostCard({}) {
           <Button text="Join" bgColor="bg-reddit-button-blue" textColor="text-white" width="px-[1rem]" height="py-[.2rem]" />
         </div>
         <div className="bottom content of main area">
-          <h1 className="text-xl font-semibold ml-2 mb-2">These guys take zero Ws, they're Illiams now</h1>
+          <h1 className="text-xl font-semibold ml-2 mb-2">These guys take zero Ws, they are Illiams now</h1>
           <div className="photo if theres a photo">
             <img className="max-h-[480px]" src="https://i.redd.it/i277m1nkai5a1.png" alt="" />
           </div>
