@@ -13,7 +13,7 @@ export default function NewPostDialog() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // router.push('/')
+    router.push('/')
     const res = await axios.post('/api/posts', { title, description })
     console.log(res.data)
     closeModal()
