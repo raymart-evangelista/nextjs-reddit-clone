@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 export default function NewPost() {
+
+  const router = useRouter()
+  // const [route, setRoute] = useState()
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    router.push('/')
 
     // console.log(event.currentTarget.elements)
     // console.log(event.currentTarget.elements[0])
