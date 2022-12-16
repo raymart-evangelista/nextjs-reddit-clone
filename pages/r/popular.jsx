@@ -2,7 +2,7 @@ import Header from "../components/header"
 import Aside from "../components/aside"
 import MainArea from '../components/main-area'
 
-export default function Popular() {
+export default function Popular({ posts }) {
 
   return (
     <div className="h-full">
@@ -10,7 +10,7 @@ export default function Popular() {
       </Header>
       <div className="fixed top-12 h-full flex overflow-hidden">
         <Aside />
-        <MainArea />
+        <MainArea posts={posts} />
       </div>
     </div>
   )

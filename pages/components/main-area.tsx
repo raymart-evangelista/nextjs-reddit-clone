@@ -1,7 +1,12 @@
 import TrendingCard from "./trending-card"
 import PostCard from "./post-card"
 
-export default function MainArea() {
+interface fetchedPosts {
+
+}
+
+export default function MainArea({ posts }: { posts: any}) {
+
   return (
     // <div className="fixed left-[270px] h-full w-[calc(100vw-270px)]  bg-reddit-bg-blue">
     <div className="fixed left-[270px] h-[calc(100vh-48px)] w-[calc(100vw-270px)] overflow-x-hidden overflow-y-scroll bg-reddit-bg-blue">
@@ -38,40 +43,9 @@ export default function MainArea() {
           <h1 className="font-semibold text-sm">Popular posts</h1>
         </div>
         <div className="flex flex-col gap-2 justify-center items-center mt-4 mb-8">
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {posts.map((post: any) => (
+            <PostCard key={post.id} post={post} />
+          ))}
         </div>
       </div>
       

@@ -1,8 +1,31 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Popular from './r/popular'
+import { prisma } from '../server/db/client'
+import type { NextPage } from 'next'
 
-export default function Home() {
+type PostProps = {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: Date;
+}
+
+type Props = {
+  posts: PostProps[]
+}
+
+export async function getServerSideProps() {
+  const posts = await prisma.post.findMany()
+
+  return {
+    props: {
+      posts: JSON.parse(JSON.stringify(posts))
+    }
+  }
+}
+
+const Home: NextPage<Props> = ({posts}) => {
   return (
     <div>
       <Head>
@@ -11,7 +34,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Popular />
+      <Popular posts={posts} />
     </div>
   )
 }
+
+export default Home
