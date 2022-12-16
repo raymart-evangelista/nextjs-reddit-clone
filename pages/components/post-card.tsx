@@ -26,6 +26,7 @@ export default function PostCard({post}: {post: any}) {
         <div className="bottom content of main area">
           {/* <h1 className="text-xl font-semibold ml-2 mb-2">These guys take zero Ws, they are Illiams now</h1> */}
           <h1 className="text-xl font-semibold ml-2 mb-2">{post.title}</h1>
+          <h2 className="text-sm font-semibold text-gray-600 ml-2 mb-2">{post.description}</h2>
           <div className="photo if theres a photo">
             <img className="max-h-[480px]" src="https://i.redd.it/i277m1nkai5a1.png" alt="" />
           </div>
