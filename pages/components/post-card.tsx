@@ -5,6 +5,7 @@ import ChatSvg from "./svg/chat"
 import Arrow90DegRight from "./svg/arrow-90deg-right"
 import Bookmark from "./bookmark"
 import ThreeDotsSvg from "./svg/three-dots"
+import moment from "moment"
 
 export default function PostCard({post}: {post: any}) {
   return (
@@ -18,7 +19,7 @@ export default function PostCard({post}: {post: any}) {
         <div className="flex justify-between items-center mx-4 my-2">
           <div className="flex gap-2">
             <div className="font-bold text-xs">r/formuladank</div>
-            <div className="text-gray-400 text-xs">Posted by u/formuladanker123 {post.createdAt}</div>
+            <div className="text-gray-400 text-xs">Posted by u/formuladanker123 {moment.utc(post.createdAt).local().startOf('seconds').fromNow()}</div>
           </div>
           <Button text="Join" bgColor="bg-reddit-button-blue" textColor="text-white" width="px-[1rem]" height="py-[.2rem]" />
         </div>
