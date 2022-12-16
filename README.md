@@ -10,8 +10,24 @@
 
 - Typescript
   - [Component Prop](https://www.youtube.com/watch?v=qvdnTfyv7y8)
-## Getting Started
 
+- PostgreSQL
+  - [Set up local PostgreSQL Database on macOS](https://www.youtube.com/watch?v=wTqosS71Dc4)
+
+- Prisma
+  - [How to build a fullstack app with Next.js, Prisma, and PostgreSQL](https://vercel.com/guides/nextjs-prisma-postgres#step-5.-set-up-github-authentication-with-nextauth)
+  - [Sam Meech-Ward Youtube guide](https://www.youtube.com/watch?v=8DiT-LdYXC0)
+  - [Sam Meech-Ward Text guide](https://www.sammeechward.com/prisma-and-nextjs)
+
+- Authentication
+  - [Sign In With Google](https://www.youtube.com/watch?v=A5ZN--P9vXM&list=LL&index=2)
+
+- Choosing a backend
+  - ended up using Postgres with Prisma ORM, database hosted on Supabase
+  - [reddit post](https://www.reddit.com/r/reactjs/comments/sb8r9m/comment/htylso4/?utm_source=share&utm_medium=web2x&context=3)
+  - [reddit post](https://www.reddit.com/r/nextjs/comments/uhz3gu/im_trying_to_choose_between_supabase_and/)
+
+## Getting Started
 First, run the development server:
 
 ```bash
