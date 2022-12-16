@@ -17,6 +17,7 @@ export default function NewPostDialog() {
     const res = await axios.post('/api/posts', { title, description })
     console.log(res.data)
     closeModal()
+    router.reload()
   }
 
   function closeModal() {
