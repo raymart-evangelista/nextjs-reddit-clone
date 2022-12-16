@@ -1,5 +1,6 @@
 import TrendingCard from "./trending-card"
 import PostCard from "./post-card"
+import NewPostDialog from "./new-post-dialog"
 
 interface fetchedPosts {
 
@@ -12,6 +13,7 @@ export default function MainArea({ posts }: { posts: any}) {
     <div className="fixed left-[270px] h-[calc(100vh-48px)] w-[calc(100vw-270px)] overflow-x-hidden overflow-y-scroll bg-reddit-bg-blue">
       <div className="">
         <div className="flex flex-col items-center mt-2 gap-2">
+          <NewPostDialog />
           <h1 className="font-semibold text-sm">Trending today</h1>
           <div className="flex flex-row gap-3 justify-center">
             <TrendingCard 
