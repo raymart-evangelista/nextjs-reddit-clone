@@ -33,7 +33,7 @@ export default function NewPostDialog() {
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          className="rounded-md bg-reddit-orange px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           Create a new post
         </button>
