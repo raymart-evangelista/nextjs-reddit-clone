@@ -18,7 +18,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       })
       // send the post object back to the client
       res.status(201).json(post)
-      res.redirect('/')
       break
     default:
       res.status(405).end(`Method ${method} Not Allowed`)
