@@ -7,10 +7,11 @@ import ChevronDownOutline from "./svg/chevron-down-outline"
 import RedditIcon from "./svg/reddit-icon"
 import RedditLogo from "./svg/reddit-logo2"
 import Dropdown from "./dropdown"
-
+import { useSession } from 'next-auth/react'
 
 
 export default function Header({ children }) {
+  const session = useSession()
   return (
     <div className="z-40 fixed top-0 w-full border-b-[1px]">
       <div className="flex h-12 p-1 items-center justify-between px-4 bg-white">
@@ -22,12 +23,16 @@ export default function Header({ children }) {
           <Search width="w-650"/>
         </div>
         <div className="flex gap-4">
-          <div>
-            <Button text="Get App" bgColor="bg-slate-100" textColor="text-black" />
-          </div>
-          <div>
-            <Button text="Log In" bgColor="bg-orangered" textColor="text-white" />
-          </div>
+          {session.status === 'unauthenticated' && (
+            <>
+              <div>
+                <Button text="Get App" bgColor="bg-slate-100" textColor="text-black" />
+              </div>
+              <div>
+                <Button text="Log In" bgColor="bg-orangered" textColor="text-white" />
+              </div>
+            </>
+          )}
           <div className="flex items-center">
             {/* <div className="flex border border-white hover:border-gray-200 px-2 py-[3px] items-center rounded-md">
               <PersonOutline />
