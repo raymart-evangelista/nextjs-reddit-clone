@@ -8,8 +8,11 @@ import QuestionCircleSvg from "./svg/question-circle";
 import CardChecklistSvg from "./svg/card-checklist";
 import MegaphoneSvg from "./svg/megaphone";
 import BoxArrowRightSvg from "./svg/box-arrow-right";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Link from "next/link";
 
 export default function Dropdown() {
+  const session = useSession()
   return (
     <Menu as="div" className="relative inline-block text-left">
       {/* Menu Button */}
@@ -111,14 +114,32 @@ export default function Dropdown() {
           </Menu.Item>
           <Menu.Item>
           {({ active, disabled }) => (
-            <a
-              className={`flex items-center 
+            // <a
+            //   className={`flex items-center 
+            //   ${disabled ? "text-gray-400" : active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm rounded-b-md border-t-[1px] font-[450]`}
+            //   href="/account-settings"
+            // >
+            //   {session.status === 'unauthenticated' && (
+            //     <Link href="/api/auth/signin" className="flex items-center ">
+            //       <BoxArrowRightSvg className="overflow-visible" />
+            //       Log In / Sign Up
+            //     </Link>
+            //   )}
+            //   {session.status === 'authenticated' && (
+            //     <Link href="/api/auth/signout" className="flex items-center ">
+            //       <BoxArrowRightSvg className="overflow-visible" />
+            //       Sign out
+            //     </Link>
+            //   )}
+            // </a>
+            <Link
+            className={`flex items-center 
               ${disabled ? "text-gray-400" : active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm rounded-b-md border-t-[1px] font-[450]`}
-              href="/account-settings"
+              href={`${session.status === 'unauthenticated' ? "/api/auth/signin" : "/api/auth/signout" }`}
             >
               <BoxArrowRightSvg className="overflow-visible" />
-              Log In / Sign Up
-            </a>
+              {session.status === 'unauthenticated' ? "Log In / Sign Up" : 'Sign Out'}
+            </Link>
           )}
           </Menu.Item>
         </Menu.Items>
