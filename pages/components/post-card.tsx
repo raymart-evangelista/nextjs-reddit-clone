@@ -6,8 +6,17 @@ import Arrow90DegRight from "./svg/arrow-90deg-right"
 import Bookmark from "./bookmark"
 import ThreeDotsSvg from "./svg/three-dots"
 import moment from "moment"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/router"
 
 export default function PostCard({post}: {post: any}) {
+  const session = useSession()
+  const router = useRouter()
+
+  function handleClick() {
+    router.push('/api/auth/signin')
+  }
+
   return (
     <div className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black">
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
@@ -21,7 +30,9 @@ export default function PostCard({post}: {post: any}) {
             <div className="font-bold text-xs">r/formuladank</div>
             <div className="text-gray-400 text-xs">Posted by u/formuladanker123 {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}</div>
           </div>
-          <Button text="Join" bgColor="bg-reddit-button-blue" textColor="text-white" width="px-[1rem]" height="py-[.2rem]" />
+          {session.status === 'unauthenticated' && 
+            <Button handleClick={handleClick} text="Join" bgColor="bg-reddit-button-blue" textColor="text-white" width="px-[1rem]" height="py-[.2rem]" />
+          }
         </div>
         <div className="bottom content of main area">
           {/* <h1 className="text-xl font-semibold ml-2 mb-2">These guys take zero Ws, they are Illiams now</h1> */}
