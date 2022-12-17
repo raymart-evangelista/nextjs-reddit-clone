@@ -8,6 +8,8 @@ import RedditIcon from "./svg/reddit-icon"
 import RedditLogo from "./svg/reddit-logo2"
 import Dropdown from "./dropdown"
 
+
+
 export default function Header({ children }) {
   return (
     <div className="z-40 fixed top-0 w-full border-b-[1px]">
