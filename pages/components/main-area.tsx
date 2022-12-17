@@ -1,13 +1,10 @@
 import TrendingCard from "./trending-card"
 import PostCard from "./post-card"
 import NewPostDialog from "./new-post-dialog"
-
-interface fetchedPosts {
-
-}
+import { useSession } from "next-auth/react"
 
 export default function MainArea({ posts }: { posts: any}) {
-
+  const session = useSession()
   return (
     // <div className="fixed left-[270px] h-full w-[calc(100vw-270px)]  bg-reddit-bg-blue">
     <div className="fixed left-[270px] h-[calc(100vh-48px)] w-[calc(100vw-270px)] overflow-x-hidden overflow-y-scroll bg-reddit-bg-blue">
@@ -42,7 +39,9 @@ export default function MainArea({ posts }: { posts: any}) {
         </div>
         <div className="flex flex-col items-center mt-4">
           <h1 className="font-semibold text-sm mb-2">Popular posts</h1>
-          <NewPostDialog />
+          {session.status === 'authenticated' && (
+            <NewPostDialog />
+          )}
         </div>
         <div className="flex flex-col gap-2 justify-center items-center mt-4 mb-8">
           {posts?.map((post: any) => (

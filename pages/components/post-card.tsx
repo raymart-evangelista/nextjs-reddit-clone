@@ -7,15 +7,10 @@ import Bookmark from "./bookmark"
 import ThreeDotsSvg from "./svg/three-dots"
 import moment from "moment"
 import { useSession } from "next-auth/react"
-import { useRouter } from "next/router"
+import Link from "next/link"
 
 export default function PostCard({post}: {post: any}) {
   const session = useSession()
-  const router = useRouter()
-
-  function handleClick() {
-    router.push('/api/auth/signin')
-  }
 
   return (
     <div className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black">
@@ -31,7 +26,9 @@ export default function PostCard({post}: {post: any}) {
             <div className="text-gray-400 text-xs">Posted by u/formuladanker123 {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}</div>
           </div>
           {session.status === 'unauthenticated' && 
-            <Button handleClick={handleClick} text="Join" bgColor="bg-reddit-button-blue" textColor="text-white" width="px-[1rem]" height="py-[.2rem]" />
+            <Link href='/api/auth/signin'>
+              <Button text="Join" bgColor="bg-reddit-button-blue" textColor="text-white" width="px-[1rem]" height="py-[.2rem]" />
+            </Link>
           }
         </div>
         <div className="bottom content of main area">

@@ -2,10 +2,12 @@ import React, { useState, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import { useSession } from 'next-auth/react'
 
 export default function NewPostDialog() {
 
   const router = useRouter()
+  const session = useSession()
 
   let [isOpen, setIsOpen] = useState(false)
   const [title, setTitle] = useState('')

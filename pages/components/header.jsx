@@ -8,6 +8,7 @@ import RedditIcon from "./svg/reddit-icon"
 import RedditLogo from "./svg/reddit-logo2"
 import Dropdown from "./dropdown"
 import { useSession } from 'next-auth/react'
+import Link from "next/link"
 
 
 export default function Header({ children }) {
@@ -29,7 +30,9 @@ export default function Header({ children }) {
                 <Button text="Get App" bgColor="bg-slate-100" textColor="text-black" />
               </div>
               <div>
-                <Button text="Log In" bgColor="bg-orangered" textColor="text-white" />
+                <Link href="/api/auth/signin">
+                  <Button text="Log In" bgColor="bg-orangered" textColor="text-white" />
+                </Link>
               </div>
             </>
           )}
