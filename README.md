@@ -7,6 +7,7 @@
 - [Extending TailwindCSS classes](https://stackoverflow.com/questions/65491795/how-can-i-specify-exactly-600px-width-in-tailwind-css)
 - [Using calc() in tailwindCSS](https://stackoverflow.com/questions/65976223/how-to-use-calc-in-tailwind-css)
 - [headless UI](https://headlessui.com/)
+- [Force reloading Next.js page--in my project, after post submission, reload page](https://www.youtube.com/watch?v=ouEPm91TlTI)
 
 - Typescript
   - [Component Prop](https://www.youtube.com/watch?v=qvdnTfyv7y8)
