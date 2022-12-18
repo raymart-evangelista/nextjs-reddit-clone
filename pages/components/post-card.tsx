@@ -23,7 +23,9 @@ export default function PostCard({post}: {post: any}) {
         <div className="flex justify-between items-center mx-4 my-2">
           <div className="flex gap-2">
             <div className="font-bold text-xs">r/formuladank</div>
-            <div className="text-gray-400 text-xs">Posted by {post.author.name} {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}</div>
+            {post.author.name && (
+              <div className="text-gray-400 text-xs">Posted by {post.author.name} {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}</div>
+            )}
           </div>
           {session.status === 'unauthenticated' && 
             <Link href='/api/auth/signin'>
