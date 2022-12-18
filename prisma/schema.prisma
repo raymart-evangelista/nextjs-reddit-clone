@@ -18,7 +18,7 @@ model Post {
   totalComments Int      @default(0)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-  author        User?     @relation(fields: [authorId], references: [id])
+  author        User?    @relation(fields: [authorId], references: [id])
   authorId      String?
 }
 
@@ -52,6 +52,7 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  username      String?   @unique
   email         String?   @unique
   emailVerified DateTime?
   image         String?

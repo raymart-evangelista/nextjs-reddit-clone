@@ -37,6 +37,8 @@ export async function getServerSideProps() {
 
 const Home: NextPage<Props> = ({posts}) => {
   return (
+
+    // if user doesn't have a username, prompt the user to add a username
     <div>
       <Head>
         <title>Reddit - Dive into anything</title>

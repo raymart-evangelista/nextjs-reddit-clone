@@ -17,7 +17,11 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         data: {
           title,
           description,
-          author: { connect: { email: session?.user?.email || undefined } },
+          author: { 
+            connect: {
+              email: session?.user?.email || undefined 
+            }
+          },
         },
       })
       // send the post object back to the client
