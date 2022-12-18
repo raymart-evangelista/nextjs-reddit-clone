@@ -17,13 +17,17 @@ type Props = {
 
 export async function getServerSideProps() {
   const posts = await prisma.post.findMany({
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
     orderBy: [
       {
         createdAt: 'desc',
       }
     ]
   })
-
   return {
     props: {
       posts: JSON.parse(JSON.stringify(posts))
