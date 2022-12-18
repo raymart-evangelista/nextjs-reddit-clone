@@ -17,14 +17,16 @@
 
 - Prisma
   - [How to build a fullstack app with Next.js, Prisma, and PostgreSQL](https://vercel.com/guides/nextjs-prisma-postgres#step-5.-set-up-github-authentication-with-nextauth)
-  - [Sam Meech-Ward Youtube guide](https://www.youtube.com/watch?v=8DiT-LdYXC0)
-  - [Sam Meech-Ward Text guide](https://www.sammeechward.com/prisma-and-nextjs)
+  - [Sam Meech-Ward: Youtube guide](https://www.youtube.com/watch?v=8DiT-LdYXC0)
+  - [Sam Meech-Ward: Text guide](https://www.sammeechward.com/prisma-and-nextjs)
 
 - NextAuth Authentication
-  - [Sign In With Google](https://www.youtube.com/watch?v=A5ZN--P9vXM&list=LL&index=2)
+  - [Code Commerce: Sign In With Google](https://www.youtube.com/watch?v=A5ZN--P9vXM&list=LL&index=2)
   - [prisma next-auth](https://github.com/hexrcs/prisma-next-auth)
   - [Youtube Walkthrough](https://www.youtube.com/watch?v=zB7u1r0tc6o)
   - [Official docs](https://next-auth.js.org/adapters/prisma)
+  - [Production deployment with Vercel](https://next-auth.js.org/deployment#vercel)
+  - [Configuration options](https://next-auth.js.org/configuration/options)
 
 - Choosing a backend
   - ended up using Postgres with Prisma ORM, database hosted on Supabase
