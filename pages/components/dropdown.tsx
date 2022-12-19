@@ -24,7 +24,7 @@ export default function Dropdown() {
               <PersonOutline />
             )}
             {session.status === 'authenticated' && (
-              session.data.user?.name
+              session.data.user?.username
             )}
             <ChevronDownOutline className="text-gray-400" />
           </div>
