@@ -6,13 +6,20 @@ import axios from 'axios'
 export default function AddUsernameDialog() {
   const [username, setUsername] = useState('')
   const [isOpen, setIsOpen] = useState(true)
+  const router = useRouter()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log('inside handleSubmit')
     
-    const res = await axios.post('/api/users', { username })
-    console.log(res.data)
+    
+    try {
+      const res = await axios.post('/api/users', { username })
+      console.log(res.data)
+      closeModal()
+      router.push('/')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   function closeModal() {
@@ -22,10 +29,6 @@ export default function AddUsernameDialog() {
   function openModal() {
     setIsOpen(true)
   }
-
-  useEffect(() => {
-    console.log(username)
-  }, [username])
 
   return (
     <Transition appear show={isOpen} as={Fragment}>

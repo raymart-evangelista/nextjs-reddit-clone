@@ -10,6 +10,7 @@ import MegaphoneSvg from "./svg/megaphone";
 import BoxArrowRightSvg from "./svg/box-arrow-right";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
+import GearSvg from "./svg/gear";
 
 export default function Dropdown() {
   const session = useSession()
@@ -19,7 +20,12 @@ export default function Dropdown() {
       <Menu.Button>
         <div className="flex items-center">
           <div className="flex border border-white hover:border-gray-200 px-2 py-[3px] items-center rounded-md">
-            <PersonOutline />
+            {session.status === 'unauthenticated' && (
+              <PersonOutline />
+            )}
+            {session.status === 'authenticated' && (
+              session.data.user?.name
+            )}
             <ChevronDownOutline className="text-gray-400" />
           </div>
         </div>
@@ -35,6 +41,18 @@ export default function Dropdown() {
           leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="rounded-md absolute right-0 bg-white w-48 flex flex-col pt-2 border border-gray-200">
+        <Menu.Item>
+          {({ active, disabled }) => (
+            <a
+              className={`flex items-center 
+              ${disabled ? "text-gray-400" : active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
+              href="/settings"
+            >
+              <GearSvg className="overflow-visible" />
+              User Settings
+            </a>
+          )}
+          </Menu.Item>
           <Menu.Item disabled>
           {({ active, disabled }) => (
             <a
