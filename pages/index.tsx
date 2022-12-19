@@ -19,7 +19,7 @@ export async function getServerSideProps() {
   const posts = await prisma.post.findMany({
     include: {
       author: {
-        select: { name: true },
+        select: { name: true, username: true },
       },
     },
     orderBy: [
