@@ -2,10 +2,13 @@ import React, { useState, Fragment, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import LoadingSvg from './svg/loading'
 
 export default function AddUsernameDialog() {
   const [username, setUsername] = useState('')
   const [isOpen, setIsOpen] = useState(true)
+  const [disable, setDisable] = useState(false)
+  const [submitText, setSubmitText] = useState('Submit')
   const router = useRouter()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -13,6 +16,8 @@ export default function AddUsernameDialog() {
     
     
     try {
+      setDisable(true)
+      setSubmitText('Loading...')
       const res = await axios.post('/api/users', { username })
       console.log(res.data)
       closeModal()
@@ -78,10 +83,19 @@ export default function AddUsernameDialog() {
                         required />
 
                       <button
-                       type="submit"
-                       className="mt-4 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        type="submit"
+                        className="
+                          mt-4 inline-flex justify-center rounded-md 
+                          border border-transparent bg-blue-100 
+                          px-4 py-2 
+                          text-sm font-medium text-blue-900 
+                          hover:bg-blue-200 
+                          focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 
+                          disabled:opacity-25 disabled:cursor-not-allowed"
+                        disabled={disable}
                       >
-                        Submit
+                        {disable && <LoadingSvg className='animate-spin -ml-1 mr-3 h-5 w-5 text-white' />}
+                        {submitText}
                       </button>
                     </form>
                   </div>
