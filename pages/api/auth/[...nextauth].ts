@@ -13,5 +13,12 @@ export default NextAuth({
   ],
   pages: {
     newUser: '/new-user'
-  }
+  },
+  // events: {
+  //   signIn: ({ user, account, profile, isNewUser }) => {
+  //     console.log(`user: ${user}`)
+  //     console.log(`account: ${account}`)
+  //     console.log(`profile: ${profile}`)
+  //   },
+  // }
 })

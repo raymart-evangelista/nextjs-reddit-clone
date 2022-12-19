@@ -12,7 +12,7 @@ type PostProps = {
 }
 
 type Props = {
-  posts: PostProps[]
+  posts: PostProps[],
 }
 
 export async function getServerSideProps() {

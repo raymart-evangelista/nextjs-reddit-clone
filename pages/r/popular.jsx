@@ -3,7 +3,6 @@ import Aside from "../components/aside"
 import MainArea from '../components/main-area'
 
 export default function Popular({ posts }) {
-
   return (
     <div className="h-full">
       <Header>
