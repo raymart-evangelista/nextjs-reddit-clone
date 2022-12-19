@@ -43,14 +43,14 @@ export default function Dropdown() {
         <Menu.Items className="rounded-md absolute right-0 bg-white w-48 flex flex-col pt-2 border border-gray-200">
         <Menu.Item>
           {({ active, disabled }) => (
-            <a
+            <Link
               className={`flex items-center 
               ${disabled ? "text-gray-400" : active && 'bg-blue-500 text-white'} p-3 gap-3 text-sm font-[450]`}
               href="/settings"
             >
               <GearSvg className="overflow-visible" />
               User Settings
-            </a>
+            </Link>
           )}
           </Menu.Item>
           <Menu.Item disabled>
