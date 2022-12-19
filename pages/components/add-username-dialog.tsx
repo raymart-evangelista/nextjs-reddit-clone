@@ -9,6 +9,7 @@ export default function AddUsernameDialog() {
   const [isOpen, setIsOpen] = useState(true)
   const [disable, setDisable] = useState(false)
   const [submitText, setSubmitText] = useState('Submit')
+  const [showErr, setShowErr] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -18,11 +19,15 @@ export default function AddUsernameDialog() {
     try {
       setDisable(true)
       setSubmitText('Loading...')
+      setShowErr(false)
       const res = await axios.post('/api/users', { username })
       console.log(res.data)
       closeModal()
       router.push('/')
     } catch (err) {
+      setDisable(false)
+      setSubmitText('Submit')
+      setShowErr(true)
       console.log(err)
     }
   }
@@ -76,11 +81,17 @@ export default function AddUsernameDialog() {
                         type="text" 
                         id="username" 
                         name="username"
-                        className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+                        className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+                          ${showErr ? 'border-red-500' : ''}`}
                         placeholder='username'
                         value={username}
                         onChange={event => setUsername(event.target.value)} 
-                        required />
+                        required 
+                      />
+
+                      {showErr && (
+                        <p className='text-red-500 text-xs mt-3 ml-1'>That username already taken.</p>
+                      )}
 
                       <button
                         type="submit"
