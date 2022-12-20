@@ -4,7 +4,7 @@ import Popular from './r/popular'
 import { prisma } from '../server/db/client'
 import type { NextPage } from 'next'
 
-type PostProps = {
+export type PostProps = {
   id: number;
   title: string;
   content: string;
