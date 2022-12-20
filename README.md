@@ -11,6 +11,8 @@
 
 - Typescript
   - [Component Prop](https://www.youtube.com/watch?v=qvdnTfyv7y8)
+  - [Property 'username' does not exist on type 'User | AdapterUser'. Property 'username' does not exist on type 'User'.ts(2339)](https://stackoverflow.com/a/73259096/20161671)
+    - [module augmentation](https://next-auth.js.org/getting-started/typescript#module-augmentation)
 
 - PostgreSQL
   - [Set up local PostgreSQL Database on macOS](https://www.youtube.com/watch?v=wTqosS71Dc4)
@@ -21,13 +23,14 @@
   - [Sam Meech-Ward: Text guide](https://www.sammeechward.com/prisma-and-nextjs)
   - [Web Dev Simplified: Learn Prisma in 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
 
-- NextAuth Authentication
+- NextAuth
   - [Code Commerce: Sign In With Google](https://www.youtube.com/watch?v=A5ZN--P9vXM&list=LL&index=2)
   - [prisma next-auth](https://github.com/hexrcs/prisma-next-auth)
   - [Youtube Walkthrough](https://www.youtube.com/watch?v=zB7u1r0tc6o)
   - [Official docs](https://next-auth.js.org/adapters/prisma)
   - [Production deployment with Vercel](https://next-auth.js.org/deployment#vercel)
   - [Configuration options](https://next-auth.js.org/configuration/options)
+  - [Extending user object in session](https://blog.skorp.io/nextauth-and-prisma-extend-the-user-object-in-the-session)
 
 - Choosing a backend
   - ended up using Postgres with Prisma ORM, database hosted on Supabase
