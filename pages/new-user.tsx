@@ -1,4 +1,4 @@
-import AddUsernameDialog from "./components/add-username-dialog"
+import AddUsernameDialog from "../components/add-username-dialog"
 
 export default function NewUser() {
   return (

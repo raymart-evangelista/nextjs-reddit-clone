@@ -1,6 +1,6 @@
-import Header from "../components/header"
-import Aside from "../components/aside"
-import MainArea from '../components/main-area'
+import Header from "../../components/header"
+import Aside from "../../components/aside"
+import MainArea from '../../components/main-area'
 
 export default function Popular({ posts }) {
   return (
