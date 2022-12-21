@@ -28,6 +28,19 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       // send the post object back to the client
       res.status(201).json(post)
       break
+    case 'DELETE':
+      const postId = req.body
+
+      console.log(`postId: ${postId}`)
+
+      const deletePost = await prisma.post.delete({
+        where: {
+          id: Number(postId),
+        }
+      })
+      // send the deletePost object back to the client
+      res.status(201).json(deletePost)
+      break
     default:
       res.status(405).end(`Method ${method} Not Allowed`)
   }
