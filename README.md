@@ -37,6 +37,13 @@
   - [reddit post](https://www.reddit.com/r/reactjs/comments/sb8r9m/comment/htylso4/?utm_source=share&utm_medium=web2x&context=3)
   - [reddit post](https://www.reddit.com/r/nextjs/comments/uhz3gu/im_trying_to_choose_between_supabase_and/)
 
+- Issues
+  - unique usernames are case sensitive, meaning that `"MyUsername" !== "myusername"`
+    - possible solutions:
+      - don't allow uppercase usernames
+      - have two columns in the database (one column serialized to a lowercase only or uppercase only format, the other column being the actual username)
+    - similar issue with subreddit names
+
 ## Getting Started
 First, run the development server:
 
