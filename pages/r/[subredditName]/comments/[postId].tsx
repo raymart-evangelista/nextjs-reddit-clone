@@ -21,12 +21,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }
 }
 
-async function deletePost(postId) {
-  // const res = await axios.delete('/api/posts', { postId })
-  // console.log(`res: ${res}`)
-  // console.log(`res.data: ${res.data}`)
-  // Router.push('/')
-}
+// async function deletePost(postId) {
+//   // const res = await axios.delete('/api/posts', { postId })
+//   // console.log(`res: ${res}`)
+//   // console.log(`res.data: ${res.data}`)
+//   // Router.push('/')
+// }
 
 
 export default function PostDetails(props: any) {
