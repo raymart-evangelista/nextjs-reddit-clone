@@ -2,6 +2,10 @@ import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import { prisma } from "../../../server/db/client"
 
+import Header from "../../../components/header"
+import Aside from "../../../components/aside"
+import MainArea from "../../../components/main-area"
+
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const posts = await prisma.post.findMany({
     where: {
@@ -25,8 +29,14 @@ export default function Subreddit(props: any) {
   const router = useRouter()
   const subredditName = router.query.subredditName
   return (
-    <>
-    {subredditName}
-    </>
+    <div className="h-full">
+      <Header>
+      </Header>
+      <div className="fixed top-12 h-full flex overflow-hidden">
+        <Aside />
+        <MainArea posts={props.posts} />
+      </div>
+    </div>
   )
 }
+

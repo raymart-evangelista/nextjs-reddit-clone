@@ -13,7 +13,7 @@ import ChevronDownOutline from './svg/chevron-down-outline'
 import styles from './aside.module.css'
 
 
-export default function Aside({ children }) {
+export default function Aside() {
 
   const topicsClass = 'text-gray-500 font-bold text-sm p-4'
 

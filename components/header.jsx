@@ -16,10 +16,12 @@ export default function Header({ children }) {
   return (
     <div className="z-40 fixed top-0 w-full border-b-[1px]">
       <div className="flex h-12 p-1 items-center justify-between px-4 bg-white">
-        <div className="flex gap-2">
+        <Link href='/'
+          className="flex gap-2"
+        >
           <RedditIcon />
           <RedditLogo />
-        </div>
+        </Link>
         <div>
           <Search width="w-650"/>
         </div>

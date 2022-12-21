@@ -15,13 +15,13 @@ export default function PostCard({post}: {post: any}) {
 
   function toSubreddit(e: any) {
     e.stopPropagation()
-    Router.push("r/subredditName", `r/${post.subreddit}`)
+    Router.push("/r/subredditName", `/r/${post.subreddit}`)
     // Router.push("r/[subredditName]", `r/${post.subreddit}`)
   }
 
   function toUser(e: any) {
     e.stopPropagation()
-    Router.push("user/username", `user/${post.author.username}`)
+    Router.push("/user/username", `/user/${post.author.username}`)
   }
 
   function upVote() {
