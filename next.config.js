@@ -8,6 +8,11 @@ const nextConfig = {
         source: '/r',
         destination: '/subreddits',
         permanent: true,
+      },
+      {
+        source: '/u/:username',
+        destination: '/user/:username',
+        permanent: true,
       }
     ]
   }
