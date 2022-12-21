@@ -12,11 +12,12 @@ export default function NewPostDialog() {
   let [isOpen, setIsOpen] = useState(false)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [subreddit, setSubreddit] = useState('')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     // router.push('/')
-    const res = await axios.post('/api/posts', { title, description })
+    const res = await axios.post('/api/posts', { title, description, subreddit })
     console.log(res.data)
     closeModal()
     router.reload()
@@ -83,6 +84,8 @@ export default function NewPostDialog() {
                         name="title"
                         className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
                         placeholder='Title'
+                        minLength={1}
+                        maxLength={300}
                         value={title}
                         onChange={event => setTitle(event.target.value)} 
                         required />
@@ -97,22 +100,30 @@ export default function NewPostDialog() {
                         onChange={event => setDescription(event.target.value)} 
                         required />
 
+                      <div className='relative w-full'>
+                        <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
+                          <p className='text-sm'>r/</p>
+                        </div>
+                        <input 
+                          type="text" 
+                          id="subreddit" 
+                          name="subreddit"
+                          className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full 
+                          p-2.5 pl-6'
+                          placeholder='Subreddit'
+                          value={subreddit}
+                          onChange={event => setSubreddit(event.target.value)} 
+                          pattern="[a-z0-9]{3,21}"
+                          required />
+                      </div>
+
                       <button
                        type="submit"
-                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                       className="mt-4 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
                         Submit
                       </button>
                     </form>
-                  </div>
-                  <div className='mt-4'>
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Thanks!
-                    </button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

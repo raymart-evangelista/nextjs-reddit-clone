@@ -9,7 +9,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   switch (method) {
     case 'POST':
       // get title and desc from the request body
-      const { title, description } = req.body
+      const { title, description, subreddit } = req.body
 
       const session = await getSession({ req })
       // use prisma to create a new post using the data
@@ -17,6 +17,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         data: {
           title,
           description,
+          subreddit,
           author: { 
             connect: {
               email: session?.user?.email || undefined 

@@ -22,7 +22,7 @@ export default function PostCard({post}: {post: any}) {
       <div className="main-content bg-white w-full rounded-tr-lg rounded-br-lg">
         <div className="flex justify-between items-center mx-4 my-2">
           <div className="flex gap-2">
-            <div className="font-bold text-xs">r/formuladank</div>
+            <div className="font-bold text-xs">r/{post.subreddit}</div>
             <div className="text-gray-400 text-xs">Posted by u/{post?.author.username} {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}</div>
           </div>
           {session.status === 'unauthenticated' && 
