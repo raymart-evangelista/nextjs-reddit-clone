@@ -113,7 +113,7 @@ export default function NewPostDialog() {
                           placeholder='Subreddit'
                           value={subreddit}
                           onChange={event => setSubreddit(event.target.value)} 
-                          pattern="[a-z0-9\_]{3,21}"
+                          pattern="[a-zA-Z0-9\_]{3,21}"
                           required />
                       </div>
 

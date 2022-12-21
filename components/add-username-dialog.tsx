@@ -87,8 +87,8 @@ export default function AddUsernameDialog() {
                         value={username}
                         onChange={event => setUsername(event.target.value)} 
                         required
-                        pattern="[a-z0-9]{3,20}"
-                        title="Password should only contain letters and digits, and have minimum length of 3 and maximum length of 20"
+                        pattern="[a-zA-Z0-9\-\_]{3,20}"
+                        title="Password should only contain letters, digits, underscores, and/or dashes, and have minimum length of 3 and maximum length of 20"
                       />
 
                       {showErr && (
