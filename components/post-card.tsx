@@ -8,10 +8,13 @@ import ThreeDotsSvg from "./svg/three-dots"
 import moment from "moment"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
-import Router from "next/router"
+import Router, { useRouter } from "next/router"
+import { useState } from "react"
 
 export default function PostCard({post}: {post: any}) {
   const session = useSession()
+  const router = useRouter()
+  const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
 
   function toSubreddit(e: any) {
     e.stopPropagation()
@@ -44,12 +47,9 @@ export default function PostCard({post}: {post: any}) {
 
   }
 
-
-
   return (
-    <Link
-      href={{pathname: `/r/${post.subreddit}/comments/${post.id}`}}
-      // onClick={() => Router.push("/r/[subredditName]/comments/[id]", `/r/${post.subreddit}/comments/${post.id}`)}
+    <div
+      // href={{pathname: `/r/${post.subreddit}/comments/${post.id}`}}
       className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black"
     >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
@@ -60,13 +60,17 @@ export default function PostCard({post}: {post: any}) {
       <div className="main-content bg-white w-full rounded-tr-lg rounded-br-lg">
         <div className="flex justify-between items-center mx-4 my-2">
           <div className="flex gap-2">
-            <div 
-              className="font-bold text-xs hover:underline"
-              onClick={(e) => toSubreddit(e)}
-            >r/{post.subreddit}</div>
+            {!inSubreddit && (
+              <div 
+                className="font-bold text-xs hover:underline hover:cursor-pointer"
+                onClick={(e) => toSubreddit(e)}
+              >
+                r/{post.subreddit}
+              </div>
+            )}
             <div className="text-gray-400 text-xs flex gap-1">Posted by
               <div 
-                className="hover:underline"
+                className="hover:underline hover:cursor-pointer"
                 onClick={(e) => toUser(e)}>
                 u/{post.author.username}
               </div>
@@ -81,7 +85,12 @@ export default function PostCard({post}: {post: any}) {
         </div>
         <div className="bottom content of main area">
           {/* <h1 className="text-xl font-semibold ml-2 mb-2">These guys take zero Ws, they are Illiams now</h1> */}
-          <h1 className="text-xl font-semibold ml-2 mb-2">{post?.title}</h1>
+          <Link 
+            href={{pathname: `/r/${post.subreddit}/comments/${post.id}`}}
+            className="text-xl font-semibold ml-2 mb-2 hover:underline"
+          >
+            {post?.title}
+          </Link>
           <h2 className="text-sm font-semibold text-gray-600 ml-2 mb-2">{post?.description}</h2>
           {/* <div className="photo if theres a photo">
             <img className="max-h-[480px]" src="https://i.redd.it/i277m1nkai5a1.png" alt="" />
@@ -105,6 +114,6 @@ export default function PostCard({post}: {post: any}) {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
