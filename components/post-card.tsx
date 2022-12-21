@@ -13,8 +13,9 @@ import Router from "next/router"
 export default function PostCard({post}: {post: any}) {
   const session = useSession()
   return (
-    <div
-      onClick={() => Router.push("/r/[subredditName]/comments/[id]", `/r/${post.subreddit}/comments/${post.id}`)}
+    <Link
+      href={{pathname: `/r/${post.subreddit}/comments/${post.id}`}}
+      // onClick={() => Router.push("/r/[subredditName]/comments/[id]", `/r/${post.subreddit}/comments/${post.id}`)}
       className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black"
     >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
@@ -25,7 +26,16 @@ export default function PostCard({post}: {post: any}) {
       <div className="main-content bg-white w-full rounded-tr-lg rounded-br-lg">
         <div className="flex justify-between items-center mx-4 my-2">
           <div className="flex gap-2">
-            <div className="font-bold text-xs">r/{post.subreddit}</div>
+            {/* <div 
+              className="font-bold text-xs"
+              onClick={() => Router.push("r/[subredditName]", `r/${post.subreddit}`)}
+            >r/{post.subreddit}</div> */}
+            <Link className="font-bold text-xs hover:underline"
+              href={{pathname: `r/${post.subreddit}`}}
+              onClick={(event) => event?.stopPropagation()}
+            >
+              r/{post.subreddit}
+            </Link>
             <div className="text-gray-400 text-xs">Posted by u/{post?.author.username} {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}</div>
           </div>
           {session.status === 'unauthenticated' && 
@@ -60,6 +70,6 @@ export default function PostCard({post}: {post: any}) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
