@@ -45,7 +45,9 @@ export default function MainArea({ posts }: { posts: any}) {
         </div>
         <div className="flex flex-col gap-2 justify-center items-center mt-4 mb-8">
           {posts?.map((post: any) => (
-            <PostCard key={post.id} post={post} />
+            <div key={post.id}>
+              <PostCard post={post} />
+            </div>
           ))}
         </div>
       </div>

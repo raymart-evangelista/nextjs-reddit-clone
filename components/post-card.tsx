@@ -8,12 +8,15 @@ import ThreeDotsSvg from "./svg/three-dots"
 import moment from "moment"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
+import Router from "next/router"
 
 export default function PostCard({post}: {post: any}) {
   const session = useSession()
-
   return (
-    <div className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black">
+    <div
+      onClick={() => Router.push("/r/[subredditName]/comments/[id]", `/r/${post.subreddit}/comments/${post.id}`)}
+      className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black"
+    >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
         <ArrowUpSquare />
         <p className="font-semibold text-xs">{post?.totalLikes}</p>

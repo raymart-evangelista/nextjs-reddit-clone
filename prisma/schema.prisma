@@ -16,6 +16,7 @@ model Post {
   description   String?  @db.Text
   subreddit     String
   totalLikes    Int      @default(0)
+  totalDislikes Int      @default(0)
   totalComments Int      @default(0)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
