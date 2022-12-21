@@ -12,6 +12,40 @@ import Router from "next/router"
 
 export default function PostCard({post}: {post: any}) {
   const session = useSession()
+
+  function toSubreddit(e: any) {
+    e.stopPropagation()
+    Router.push("r/subredditName", `r/${post.subreddit}`)
+    // Router.push("r/[subredditName]", `r/${post.subreddit}`)
+  }
+
+  function toUser(e: any) {
+    e.stopPropagation()
+    Router.push("user/username", `user/${post.author.username}`)
+  }
+
+  function upVote() {
+
+  }
+
+  function downVote() {
+
+  }
+
+  function toComments() {
+
+  }
+
+  function share() {
+
+  }
+
+  function save() {
+
+  }
+
+
+
   return (
     <Link
       href={{pathname: `/r/${post.subreddit}/comments/${post.id}`}}
@@ -26,17 +60,18 @@ export default function PostCard({post}: {post: any}) {
       <div className="main-content bg-white w-full rounded-tr-lg rounded-br-lg">
         <div className="flex justify-between items-center mx-4 my-2">
           <div className="flex gap-2">
-            {/* <div 
-              className="font-bold text-xs"
-              onClick={() => Router.push("r/[subredditName]", `r/${post.subreddit}`)}
-            >r/{post.subreddit}</div> */}
-            <Link className="font-bold text-xs hover:underline"
-              href={{pathname: `r/${post.subreddit}`}}
-              onClick={(event) => event?.stopPropagation()}
-            >
-              r/{post.subreddit}
-            </Link>
-            <div className="text-gray-400 text-xs">Posted by u/{post?.author.username} {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}</div>
+            <div 
+              className="font-bold text-xs hover:underline"
+              onClick={(e) => toSubreddit(e)}
+            >r/{post.subreddit}</div>
+            <div className="text-gray-400 text-xs flex gap-1">Posted by
+              <div 
+                className="hover:underline"
+                onClick={(e) => toUser(e)}>
+                u/{post.author.username}
+              </div>
+              {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}
+            </div>
           </div>
           {session.status === 'unauthenticated' && 
             <Link href='/api/auth/signin'>
