@@ -15,7 +15,7 @@ export default function PostCard({post}: {post: any}) {
   const session = useSession()
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
-
+  
   function toSubreddit(e: any) {
     e.stopPropagation()
     Router.push("/r/subredditName", `/r/${post.subreddit}`)
@@ -68,14 +68,26 @@ export default function PostCard({post}: {post: any}) {
                 r/{post.subreddit}
               </div>
             )}
-            <div className="text-gray-400 text-xs flex gap-1">Posted by
+            {post.createdAt === post.updatedAt ? (
+              <div className="text-gray-400 text-xs flex gap-1">Posted by
+                <div 
+                  className="hover:underline hover:cursor-pointer"
+                  onClick={(e) => toUser(e)}>
+                  u/{post.author.username}
+                </div>
+                {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}
+              </div>
+            ) : (
+              <div className="text-gray-400 text-xs flex gap-1">Edited by
               <div 
                 className="hover:underline hover:cursor-pointer"
                 onClick={(e) => toUser(e)}>
                 u/{post.author.username}
               </div>
-              {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}
+              {moment.utc(post?.updatedAt).local().startOf('seconds').fromNow()}
             </div>
+            )
+            }
           </div>
           {session.status === 'unauthenticated' && 
             <Link href='/api/auth/signin'>

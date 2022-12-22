@@ -8,39 +8,55 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 
   switch (method) {
     case 'POST':
-      // get title and desc from the request body
-      const { title, description, subreddit } = req.body
-
-      const session = await getSession({ req })
-      // use prisma to create a new post using the data
-      const post = await prisma.post.create({
-        data: {
-          title,
-          description,
-          subreddit,
-          author: { 
-            connect: {
-              email: session?.user?.email || undefined 
-            }
+      {
+        // get title and desc from the request body
+        const { title, description, subreddit } = req.body
+  
+        const session = await getSession({ req })
+        // use prisma to create a new post using the data
+        const post = await prisma.post.create({
+          data: {
+            title,
+            description,
+            subreddit,
+            author: { 
+              connect: {
+                email: session?.user?.email || undefined 
+              }
+            },
           },
-        },
-      })
-      // send the post object back to the client
-      res.status(201).json(post)
-      break
+        })
+        // send the post object back to the client
+        res.status(201).json(post)
+        break
+      }
     case 'DELETE':
-      const postId = req.body
-
-      console.log(`postId: ${postId}`)
-
-      const deletePost = await prisma.post.delete({
-        where: {
-          id: Number(postId),
-        }
-      })
-      // send the deletePost object back to the client
-      res.status(201).json(deletePost)
-      break
+      {
+        const postId = req.body  
+        const deletePost = await prisma.post.delete({
+          where: {
+            id: Number(postId),
+          }
+        })
+        // send the deletePost object back to the client
+        res.status(201).json(deletePost)
+        break
+      }
+    case 'PUT':
+      {
+        const { postId, newDescription } = req.body
+        const updatePost = await prisma.post.update({
+          where: {
+            id: postId,
+          },
+          data: {
+            description: newDescription,
+          }
+        })
+        // send the updatePost object back to the client
+        res.status(201).json(updatePost)
+        break
+      }
     default:
       res.status(405).end(`Method ${method} Not Allowed`)
   }

@@ -4,6 +4,8 @@ import { useRouter } from "next/router"
 import { prisma } from "../../../../server/db/client"
 import Router from "next/router"
 import axios from "axios"
+import React from "react"
+import EditPostDialog from "../../../../components/edit-post-dialog"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const post = await prisma.post.findUnique({
@@ -45,6 +47,13 @@ export default function PostDetails(props: any) {
     Router.push('/')
   }
 
+  // const handleShowEditForm = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   <EditPostDialog post={props.post} />
+  //   // const res = await axios.put('/api/posts', {data: props.post.id })
+  //   // console.log(`res: ${res}`)
+  //   // console.log(`res.data: ${res.data}`)
+  //   // Router.push('/')
+  // }
   return (
     <>
       <p>HEllo</p>
@@ -52,6 +61,11 @@ export default function PostDetails(props: any) {
         userHasValidSession && postBelongsToUser && (
           // <button onClick={() => deletePost(props.post.id)}>Delete post</button>
           <button onClick={handleDelete}>Delete</button>
+        )
+      }
+      {
+        userHasValidSession && postBelongsToUser && (
+          <EditPostDialog post={props.post} />
         )
       }
     </>
