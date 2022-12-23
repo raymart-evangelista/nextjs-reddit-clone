@@ -18,6 +18,13 @@ export type PostProps = {
   author: UserProps
 }
 
+export type Post = {
+  post: PostProps
+}
+
+export type PostsListProps = {
+  posts: PostProps[],
+}
 export type UserProps = {
   id: string
   name: string
@@ -26,16 +33,12 @@ export type UserProps = {
   image: string
 }
 
-export type PostsListProps = {
-  posts: PostProps[],
+export type User = {
+  user: UserProps
 }
 
-export type Post = {
-  post: PostProps
-}
-
-// export type PostsListProps = {
-//   posts: {
+// export type PostPropsRefactored = {
+//   post: {
 //     id: number
 //     title: string
 //     description: string
