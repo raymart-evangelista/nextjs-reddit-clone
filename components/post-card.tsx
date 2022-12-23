@@ -1,9 +1,9 @@
-import ArrowUpSquare from "./svg/arrow-up-square"
-import ArrowDownSquare from "./svg/arrow-down-square"
+import ArrowUpSquareSvg from "./svg/arrow-up-square"
+import ArrowDownSquareSvg from "./svg/arrow-down-square"
 import Button from './button'
 import ChatSvg from "./svg/chat"
-import Arrow90DegRight from "./svg/arrow-90deg-right"
-import Bookmark from "./svg/bookmark"
+import Arrow90DegRightSvg from "./svg/arrow-90deg-right"
+import BookmarkSvg from "./svg/bookmark"
 import ThreeDotsSvg from "./svg/three-dots"
 import moment from "moment"
 import { useSession } from "next-auth/react"
@@ -53,9 +53,9 @@ export default function PostCard({post}) {
       className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black"
     >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
-        <ArrowUpSquare />
+        <ArrowUpSquareSvg />
         <p className="font-semibold text-xs">{post?.totalLikes}</p>
-        <ArrowDownSquare />
+        <ArrowDownSquareSvg />
       </div>
       <div className="main-content bg-white w-full rounded-tr-lg rounded-br-lg">
         <div className="flex justify-between items-center mx-4 my-2">
@@ -113,11 +113,11 @@ export default function PostCard({post}) {
               <p className="text-xs font-bold text-gray-500">{post?.totalComments} Comments</p>
             </div>
             <div className="flex gap-2 items-center hover:bg-gray-200">
-              <Arrow90DegRight />
+              <Arrow90DegRightSvg />
               <p className="text-xs font-bold text-gray-500">Share</p>
             </div>
             <div className="flex gap-2 items-center hover:bg-gray-200">
-              <Bookmark />
+              <BookmarkSvg />
               <p className="text-xs font-bold text-gray-500">Save</p>
             </div>
             <div className="flex gap-2 items-center hover:bg-gray-200">

@@ -1,11 +1,8 @@
 // header component will be shared across all pages
 import Search from "./searchbar"
 import Button from "./button"
-import Image from 'next/image'
-import PersonOutline from "./svg/person-outline"
-import ChevronDownOutline from "./svg/chevron-down-outline"
-import RedditIcon from "./svg/reddit-icon"
-import RedditLogo from "./svg/reddit-logo2"
+import RedditIconSvg from "./svg/reddit-icon"
+import RedditLogoSvg from "./svg/reddit-logo2"
 import Dropdown from "./dropdown"
 import { useSession } from 'next-auth/react'
 import Link from "next/link"
@@ -19,8 +16,8 @@ export default function Header({ children }) {
         <Link href='/'
           className="flex gap-2"
         >
-          <RedditIcon />
-          <RedditLogo />
+          <RedditIconSvg />
+          <RedditLogoSvg />
         </Link>
         <div>
           <Search width="w-650"/>

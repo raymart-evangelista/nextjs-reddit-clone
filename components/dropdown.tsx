@@ -1,7 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from 'react'
-import PersonOutline from "./svg/person-outline"
-import ChevronDownOutline from "./svg/chevron-down-outline"
+import PersonOutlineSvg from "./svg/person-outline"
+import ChevronDownOutlineSvg from "./svg/chevron-down-outline"
 import MoonSvg from "./svg/moon";
 import InfoCircleSvg from "./svg/info-circle";
 import QuestionCircleSvg from "./svg/question-circle";
@@ -22,12 +22,12 @@ export default function Dropdown() {
         <div className="flex items-center">
           <div className="flex border border-white hover:border-gray-200 px-2 py-[3px] items-center rounded-md">
             {session.status === 'unauthenticated' && (
-              <PersonOutline />
+              <PersonOutlineSvg />
             )}
             {session.status === 'authenticated' && (
               <div className="flex gap-2">
                 {session.data.user.username}
-                <PersonOutline />
+                <PersonOutlineSvg />
               </div>
             )}
             <ChevronDownOutline className="text-gray-400" />
@@ -92,7 +92,7 @@ export default function Dropdown() {
                 <InfoCircleSvg className="overflow-visible" />
                 More
               </div>
-              <ChevronDownOutline className={`${active && 'text-white'}`} />
+              <ChevronDownOutlineSvg className={`${active && 'text-white'}`} />
             </a>
           )}
           </Menu.Item>
@@ -107,7 +107,7 @@ export default function Dropdown() {
                 <CardChecklistSvg className="overflow-visible" />
                 Terms & Policies
               </div>
-              <ChevronDownOutline className={`${active && 'text-white'} overflow-visible`} />
+              <ChevronDownOutlineSvg className={`${active && 'text-white'} overflow-visible`} />
             </a>
           )}
           </Menu.Item>
