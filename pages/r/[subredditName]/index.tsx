@@ -5,6 +5,7 @@ import { prisma } from "../../../server/db/client"
 import Header from "../../../components/header"
 import Aside from "../../../components/aside"
 import MainArea from "../../../components/main-area"
+import { PostsListProps } from "../../../types/types"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const posts = await prisma.post.findMany({
@@ -24,8 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }
 }
 
-export default function Subreddit(props) {
-  console.log(props)
+export default function Subreddit({posts}: PostsListProps) {
   const router = useRouter()
   const subredditName = router.query.subredditName
   return (
@@ -34,7 +34,7 @@ export default function Subreddit(props) {
       </Header>
       <div className="fixed top-12 h-full flex overflow-hidden">
         <Aside />
-        <MainArea posts={props.posts} />
+        <MainArea posts={posts} />
       </div>
     </div>
   )
