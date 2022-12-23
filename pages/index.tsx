@@ -24,7 +24,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({posts}: PostsListProps) {
-  console.log(posts[0].subreddit.name)
   return (
     <div>
       <Head>
