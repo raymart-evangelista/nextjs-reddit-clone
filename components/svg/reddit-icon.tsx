@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const RedditIcon = (props) => (
+const RedditIconSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="2rem"
@@ -17,4 +17,4 @@ const RedditIcon = (props) => (
 )
 
 
-export default RedditIcon
+export default RedditIconSvg

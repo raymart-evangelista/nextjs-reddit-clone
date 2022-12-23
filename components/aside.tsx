@@ -9,7 +9,7 @@ import TvSvg from './svg/tv'
 import StarSvg from './svg/star'
 import ThreeDotsSvg from './svg/three-dots'
 import Button from './button'
-import ChevronDownOutline from './svg/chevron-down-outline'
+import ChevronDownOutlineSvg from './svg/chevron-down-outline'
 import styles from './aside.module.css'
 
 
@@ -49,49 +49,49 @@ export default function Aside() {
                 <GameControllerSvg />
                 <h1>Gaming</h1>
               </div>
-              <ChevronDownOutline />
+              <ChevronDownOutlineSvg />
             </div>
             <div className='flex justify-between items-center px-4 py-2 hover:bg-gray-100'>
               <div className='flex gap-2 items-center'>
                 <BaseballSvg />
                 <h1>Sports</h1>
               </div>
-              <ChevronDownOutline />
+              <ChevronDownOutlineSvg />
             </div>
             <div className='flex justify-between items-center px-4 py-2 hover:bg-gray-100'>
               <div className='flex gap-2 items-center'>
                 <GraphSvg />
                 <h1 className={styles.long}>Business, Economics, and Finance</h1>
               </div>
-              <ChevronDownOutline />
+              <ChevronDownOutlineSvg />
             </div>
             <div className='flex justify-between items-center px-4 py-2 hover:bg-gray-100'>
               <div className='flex gap-2 items-center'>
                 <WebSvg />
                 <h1>Crypto</h1>
               </div>
-              <ChevronDownOutline />
+              <ChevronDownOutlineSvg />
             </div>
             <div className='flex justify-between items-center px-4 py-2 hover:bg-gray-100'>
               <div className='flex gap-2 items-center'>
                 <TvSvg />
                 <h1>Television</h1>
               </div>
-              <ChevronDownOutline />
+              <ChevronDownOutlineSvg />
             </div>
             <div className='flex justify-between items-center px-4 py-2 hover:bg-gray-100'>
               <div className='flex gap-2 items-center'>
                 <StarSvg />
                 <h1>Celebrity</h1>
               </div>
-              <ChevronDownOutline />
+              <ChevronDownOutlineSvg />
             </div>
             <div className='flex justify-between items-center px-4 py-2 hover:bg-gray-100'>
               <div className='flex gap-2 items-center'>
                 <ThreeDotsSvg />
                 <h1>More topics</h1>
               </div>
-              <ChevronDownOutline />
+              <ChevronDownOutlineSvg />
             </div>
           </div>
           <div className="flex flex-col border-t-[1px] m-8 gap-4">

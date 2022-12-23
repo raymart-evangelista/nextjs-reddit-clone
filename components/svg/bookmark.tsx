@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const Bookmark = (props: any) => (
+const BookmarkSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1.5em"
@@ -14,4 +14,4 @@ const Bookmark = (props: any) => (
   </svg>
 )
 
-export default Bookmark
+export default BookmarkSvg

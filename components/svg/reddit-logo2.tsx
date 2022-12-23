@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const RedditLogo = (props) => (
+const RedditLogoSvg = (props) => (
   <svg
     className="_1bWuGs_1sq4Pqy099x_yy-"
     width="3.4rem"
@@ -16,4 +16,4 @@ const RedditLogo = (props) => (
   </svg>
 )
 
-export default RedditLogo
+export default RedditLogoSvg

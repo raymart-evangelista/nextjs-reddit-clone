@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const PersonOutline = (props) => (
+const PersonOutlineSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="ionicon"
@@ -28,4 +28,4 @@ const PersonOutline = (props) => (
   </svg>
 )
 
-export default PersonOutline
+export default PersonOutlineSvg

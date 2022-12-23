@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const Arrow90DegRight = (props) => (
+const Arrow90DegRightSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1.5em"
@@ -17,4 +17,4 @@ const Arrow90DegRight = (props) => (
   </svg>
 )
 
-export default Arrow90DegRight
+export default Arrow90DegRightSvg

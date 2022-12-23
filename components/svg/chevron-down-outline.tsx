@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const ChevronDownOutline = (props) => (
+const ChevronDownOutlineSvg = (props) => (
   <svg
   xmlns="http://www.w3.org/2000/svg"
   width="1em"
@@ -16,4 +16,4 @@ const ChevronDownOutline = (props) => (
 </svg>
 )
 
-export default ChevronDownOutline
+export default ChevronDownOutlineSvg
