@@ -3,7 +3,7 @@ import ArrowDownSquare from "./svg/arrow-down-square"
 import Button from './button'
 import ChatSvg from "./svg/chat"
 import Arrow90DegRight from "./svg/arrow-90deg-right"
-import Bookmark from "./bookmark"
+import Bookmark from "./svg/bookmark"
 import ThreeDotsSvg from "./svg/three-dots"
 import moment from "moment"
 import { useSession } from "next-auth/react"
@@ -11,7 +11,7 @@ import Link from "next/link"
 import Router, { useRouter } from "next/router"
 import { useState } from "react"
 
-export default function PostCard({post}: {post: any}) {
+export default function PostCard({post}) {
   const session = useSession()
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')

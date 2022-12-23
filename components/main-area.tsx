@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react"
 import { useState } from "react"
 import { useRouter } from "next/router"
 
-export default function MainArea({ posts }: { posts: any}) {
+export default function MainArea({ posts }) {
   const session = useSession()
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')

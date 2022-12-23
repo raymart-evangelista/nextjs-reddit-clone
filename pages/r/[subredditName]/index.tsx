@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }
 }
 
-export default function Subreddit(props: any) {
+export default function Subreddit(props) {
   console.log(props)
   const router = useRouter()
   const subredditName = router.query.subredditName

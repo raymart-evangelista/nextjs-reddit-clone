@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 // }
 
 
-export default function PostDetails(props: any) {
+export default function PostDetails(props) {
   const session = useSession()
   const userHasValidSession = Boolean(session)
   const postBelongsToUser = session.data?.user.email === props.post.author.email

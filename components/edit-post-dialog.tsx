@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 
-export default function EditPostDialog({post}: any) {
+export default function EditPostDialog({post}) {
 
   const router = useRouter()
   const session = useSession()
