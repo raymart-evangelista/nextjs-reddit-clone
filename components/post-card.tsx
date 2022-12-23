@@ -54,9 +54,11 @@ export default function PostCard({ post }: Post) {
       className="flex border-[1px] border-gray-300 w-[600px] rounded-lg bg-slate-50 hover:border-black"
     >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
-        <ArrowUpSquareSvg />
-        <p className="font-semibold text-xs">{post?.totalLikes}</p>
-        <ArrowDownSquareSvg />
+        <div className="flex flex-col gap-1 items-center">
+          <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-orange-500 hover:cursor-pointer" />
+          <p className="font-semibold text-xs">{post?.totalLikes}</p>
+          <ArrowDownSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-blue-500 hover:cursor-pointer" />
+        </div>
       </div>
       <div className="main-content bg-white w-full rounded-tr-lg rounded-br-lg">
         <div className="flex justify-between items-center mx-4 my-2">
