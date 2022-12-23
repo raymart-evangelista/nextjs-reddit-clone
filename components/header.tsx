@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react'
 import Link from "next/link"
 
 
-export default function Header({ children }) {
+export default function Header() {
   const session = useSession()
   return (
     <div className="z-40 fixed top-0 w-full border-b-[1px]">
@@ -44,7 +44,6 @@ export default function Header({ children }) {
           </div>
         </div>
       </div>
-      {children}
     </div>
   )
 }

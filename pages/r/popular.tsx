@@ -6,8 +6,7 @@ import { PostsListProps } from "../../types/types"
 export default function Popular({ posts }: PostsListProps) {
   return (
     <div className="h-full">
-      <Header>
-      </Header>
+      <Header />
       <div className="fixed top-12 h-full flex overflow-hidden">
         <Aside />
         <MainArea posts={posts} />
