@@ -11,17 +11,36 @@ datasource db {
 }
 
 model Post {
-  id            Int      @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   title         String
-  description   String?  @db.Text
-  subreddit     String
-  totalLikes    Int      @default(0)
-  totalDislikes Int      @default(0)
-  totalComments Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  author        User?    @relation(fields: [authorId], references: [id])
+  description   String?   @db.Text
+  totalLikes    Int       @default(0)
+  totalDislikes Int       @default(0)
+  totalComments Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  author        User?     @relation("CreatedPosts", fields: [authorId], references: [id])
   authorId      String?
+  likedBy       User?     @relation("LikedPosts", fields: [likedById], references: [id])
+  likedById     String?
+  dislikedBy    User?     @relation("DislikedPosts", fields: [dislikedById], references: [id])
+  dislikedById  String?
+  Subreddit     Subreddit @relation(fields: [subredditId], references: [id])
+  subredditId   String
+}
+
+model Subreddit {
+  id      String  @id @default(cuid())
+  name    String  @unique
+  posts   Post[]
+  Topic   Topic?  @relation(fields: [topicId], references: [id])
+  topicId String?
+}
+
+model Topic {
+  id         String      @id @default(cuid())
+  name       String      @unique
+  subreddits Subreddit[]
 }
 
 model Account {
@@ -60,7 +79,9 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  posts         Post[]
+  createdPosts  Post[]    @relation("CreatedPosts")
+  likedPosts    Post[]    @relation("LikedPosts")
+  dislikedPosts Post[]    @relation("DislikedPosts")
 }
 
 model VerificationToken {
