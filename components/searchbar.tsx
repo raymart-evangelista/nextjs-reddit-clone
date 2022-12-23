@@ -1,6 +1,7 @@
+import { SvgProps } from "../types/types"
 import SearchSvg from "./svg/search"
 
-export default function Search({width}) {
+export default function Search({width}: SvgProps) {
 
   return (
   <form>

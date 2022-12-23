@@ -43,6 +43,7 @@
       - don't allow uppercase usernames
       - have two columns in the database (one column serialized to a lowercase only or uppercase only format, the other column being the actual username)
     - similar issue with subreddit names
+  - prop drilling posts from `index.tsx` to sub levels (so many middleware components to get to where it needs to be)
 
 ## Getting Started
 First, run the development server:

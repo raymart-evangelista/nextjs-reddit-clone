@@ -6,6 +6,7 @@ import Router from "next/router"
 import axios from "axios"
 import React from "react"
 import EditPostDialog from "../../../../components/edit-post-dialog"
+import { PostProps } from "../../../../types/types"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const post = await prisma.post.findUnique({
@@ -30,18 +31,21 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 //   // Router.push('/')
 // }
 
+type Post = {
+  post: PostProps
+}
 
-export default function PostDetails(props) {
+export default function PostDetails({post}: Post) {
   const session = useSession()
   const userHasValidSession = Boolean(session)
-  const postBelongsToUser = session.data?.user.email === props.post.author.email
+  const postBelongsToUser = session.data?.user.email === post.author.email
   // console.log(session.data?.user.email)
   // console.log(props.post.author.email)
 
-  console.log(props.post.id)
+  console.log(post.id)
 
   const handleDelete = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const res = await axios.delete('/api/posts', {data: props.post.id })
+    const res = await axios.delete('/api/posts', {data: post.id })
     console.log(`res: ${res}`)
     console.log(`res.data: ${res.data}`)
     Router.push('/')
@@ -65,7 +69,7 @@ export default function PostDetails(props) {
       }
       {
         userHasValidSession && postBelongsToUser && (
-          <EditPostDialog post={props.post} />
+          <EditPostDialog post={post} />
         )
       }
     </>

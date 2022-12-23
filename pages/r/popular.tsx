@@ -1,8 +1,9 @@
 import Header from "../../components/header"
 import Aside from "../../components/aside"
 import MainArea from '../../components/main-area'
+import { PostsListProps } from "../../types/types"
 
-export default function Popular({ posts }) {
+export default function Popular({ posts }: PostsListProps) {
   return (
     <div className="h-full">
       <Header>

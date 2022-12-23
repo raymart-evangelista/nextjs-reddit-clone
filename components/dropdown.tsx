@@ -30,7 +30,7 @@ export default function Dropdown() {
                 <PersonOutlineSvg />
               </div>
             )}
-            <ChevronDownOutline className="text-gray-400" />
+            <ChevronDownOutlineSvg className="text-gray-400" />
           </div>
         </div>
       </Menu.Button>

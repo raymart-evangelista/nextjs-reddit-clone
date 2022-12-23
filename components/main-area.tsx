@@ -4,8 +4,9 @@ import NewPostDialog from "./new-post-dialog"
 import { useSession } from "next-auth/react"
 import { useState } from "react"
 import { useRouter } from "next/router"
+import { PostsListProps } from "../types/types"
 
-export default function MainArea({ posts }) {
+export default function MainArea({ posts }: PostsListProps) {
   const session = useSession()
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
@@ -52,11 +53,38 @@ export default function MainArea({ posts }) {
           </>
         )}
         <div className="flex flex-col gap-2 justify-center items-center mt-4 mb-8">
-          {posts?.map((post: any) => (
+          {/* {posts.map((post) => (
             <div key={post.id}>
               <PostCard post={post} />
             </div>
-          ))}
+          ))} */}
+          {posts.map((post) => {
+            return (
+              <div key={post.id}>
+                <PostCard post={post} />
+              </div>
+            )
+          })}
+          {/* {
+            posts.map((post) => {
+              return (
+                <div key={post.id}>
+                  <PostCard 
+                    id={post.id}
+                    title={post.title}
+                    description={post.description}
+                    subreddit={post.subreddit}
+                    totalLikes={post.totalLikes}
+                    totalDislikes={post.totalDislikes}
+                    totalComments={post.totalComments}
+                    createdAt={post.createdAt}
+                    updatedAt={post.updatedAt}
+                    author={post.author}
+                  />
+                </div>
+              )
+            })
+          } */}
         </div>
       </div>
       

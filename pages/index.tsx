@@ -2,18 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Popular from './r/popular'
 import { prisma } from '../server/db/client'
-import type { NextPage } from 'next'
-
-export type PostProps = {
-  id: number;
-  title: string;
-  content: string;
-  createdAt: Date;
-}
-
-type Props = {
-  posts: PostProps[],
-}
+import { PostsListProps } from '../types/types'
 
 export async function getServerSideProps() {
   const posts = await prisma.post.findMany({
@@ -35,9 +24,8 @@ export async function getServerSideProps() {
   }
 }
 
-const Home: NextPage<Props> = ({posts}) => {
+export default function Home({posts}: PostsListProps) {
   return (
-
     <div>
       <Head>
         <title>Reddit - Dive into anything</title>
@@ -49,5 +37,3 @@ const Home: NextPage<Props> = ({posts}) => {
     </div>
   )
 }
-
-export default Home

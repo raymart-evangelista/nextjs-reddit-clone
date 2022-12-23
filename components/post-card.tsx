@@ -10,8 +10,13 @@ import { useSession } from "next-auth/react"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
 import { useState } from "react"
+import { PostProps } from "../types/types"
 
-export default function PostCard({post}) {
+type Post = {
+  post: PostProps
+}
+
+export default function PostCard({ post }: Post) {
   const session = useSession()
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
