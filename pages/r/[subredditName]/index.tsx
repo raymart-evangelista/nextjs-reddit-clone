@@ -10,7 +10,9 @@ import { PostsListProps } from "../../../types/types"
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const posts = await prisma.post.findMany({
     where: {
-      subreddit: String(params?.subredditName)
+      subreddit: {
+        name: String(params?.subredditName)
+      }
     },
     include: {
       author: {
