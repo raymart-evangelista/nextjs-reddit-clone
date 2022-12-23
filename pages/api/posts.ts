@@ -10,15 +10,40 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     case 'POST':
       {
         // get title and desc from the request body
-        const { title, description, subreddit } = req.body
+        const { title, description, subredditName } = req.body
   
         const session = await getSession({ req })
+
+        // get current subreddit
+        try {
+          await prisma.subreddit.findUniqueOrThrow({
+            where: {
+              name: subredditName
+            }
+          })          
+        } catch (error) {
+          await prisma.subreddit.create({
+            data: {
+              name: subredditName
+            }
+          })
+        }
         // use prisma to create a new post using the data
+        const subreddit = await prisma.subreddit.findUnique({
+          where: {
+            name: subredditName
+          }
+        })
+
         const post = await prisma.post.create({
           data: {
             title,
             description,
-            subreddit,
+            subreddit: {
+              connect: {
+                id: subreddit?.id
+              }
+            },
             author: { 
               connect: {
                 email: session?.user?.email || undefined 

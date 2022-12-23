@@ -75,7 +75,7 @@ export default function MainArea({ posts }: PostsListProps) {
             }
             return (
               <div key={post.id}>
-                <PostCard post={postStuff} />
+                <PostCard post={post} />
               </div>
             )
           })}

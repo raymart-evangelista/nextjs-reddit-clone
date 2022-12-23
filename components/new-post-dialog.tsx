@@ -12,12 +12,12 @@ export default function NewPostDialog() {
   let [isOpen, setIsOpen] = useState(false)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [subreddit, setSubreddit] = useState('')
+  const [subredditName, setSubredditName] = useState('')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     // router.push('/')
-    const res = await axios.post('/api/posts', { title, description, subreddit })
+    const res = await axios.post('/api/posts', { title, description, subredditName })
     console.log(res.data)
     closeModal()
     router.reload()
@@ -106,13 +106,13 @@ export default function NewPostDialog() {
                         </div>
                         <input 
                           type="text" 
-                          id="subreddit" 
-                          name="subreddit"
+                          id="subredditName" 
+                          name="subredditName"
                           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full 
                           p-2.5 pl-6'
                           placeholder='Subreddit'
-                          value={subreddit}
-                          onChange={event => setSubreddit(event.target.value)} 
+                          value={subredditName}
+                          onChange={event => setSubredditName(event.target.value)} 
                           pattern="[a-zA-Z0-9\_]{3,21}"
                           required />
                       </div>
