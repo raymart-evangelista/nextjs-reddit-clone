@@ -1,6 +1,7 @@
 import * as React from "react"
+import { SvgProps } from "../../types/types"
 
-const RedditLogoSvg = (props) => (
+const RedditLogoSvg = (props: SvgProps) => (
   <svg
     className="_1bWuGs_1sq4Pqy099x_yy-"
     width="3.4rem"

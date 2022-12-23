@@ -1,6 +1,7 @@
 import * as React from "react"
+import { SvgProps } from "../../types/types"
 
-const LoadingSvg = (props) => (
+const LoadingSvg = (props: SvgProps) => (
   <svg
     className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
     xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,7 @@
 import * as React from "react"
+import { SvgProps } from "../../types/types"
 
-const PersonOutlineSvg = (props) => (
+const PersonOutlineSvg = (props: SvgProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="ionicon"

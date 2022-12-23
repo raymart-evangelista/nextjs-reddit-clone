@@ -1,6 +1,7 @@
 import * as React from "react"
+import { SvgProps } from "../../types/types"
 
-const ArrowDownSquare = (props) => (
+const ArrowDownSquareSvg = (props: SvgProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1.5em"
@@ -17,4 +18,4 @@ const ArrowDownSquare = (props) => (
   </svg>
 )
 
-export default ArrowDownSquare
+export default ArrowDownSquareSvg
