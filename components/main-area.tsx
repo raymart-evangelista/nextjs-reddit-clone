@@ -58,7 +58,7 @@ export default function MainArea({ posts }: PostsListProps) {
               <PostCard post={post} />
             </div>
           ))} */}
-          {posts.map((post) => {
+          {posts?.map((post) => {
             return (
               <div key={post.id}>
                 <PostCard post={post} />
