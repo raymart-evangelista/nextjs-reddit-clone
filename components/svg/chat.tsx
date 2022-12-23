@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const ChatSvg = (props: any) => (
+const ChatSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1.5em"

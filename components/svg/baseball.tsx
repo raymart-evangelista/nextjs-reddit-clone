@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const BaseballSvg = (props: any) => (
+const BaseballSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="ionicon"

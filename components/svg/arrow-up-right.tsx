@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const ArrowUpRightSvg = (props: any) => (
+const ArrowUpRightSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"

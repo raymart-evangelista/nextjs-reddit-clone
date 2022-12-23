@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const MegaphoneSvg = (props: any) => (
+const MegaphoneSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"

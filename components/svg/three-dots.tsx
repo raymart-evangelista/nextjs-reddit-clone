@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const ThreeDotsSvg = (props: any) => (
+const ThreeDotsSvg = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1rem"
