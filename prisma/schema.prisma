@@ -11,29 +11,29 @@ datasource db {
 }
 
 model Post {
-  id            Int       @id @default(autoincrement())
+  id            Int        @id @default(autoincrement())
   title         String
-  description   String?   @db.Text
-  totalLikes    Int       @default(0)
-  totalDislikes Int       @default(0)
-  totalComments Int       @default(0)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  author        User?     @relation("CreatedPosts", fields: [authorId], references: [id])
+  description   String?    @db.Text
+  totalLikes    Int        @default(0)
+  totalDislikes Int        @default(0)
+  totalComments Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  author        User?      @relation("CreatedPosts", fields: [authorId], references: [id])
   authorId      String?
-  likedBy       User?     @relation("LikedPosts", fields: [likedById], references: [id])
+  likedBy       User?      @relation("LikedPosts", fields: [likedById], references: [id])
   likedById     String?
-  dislikedBy    User?     @relation("DislikedPosts", fields: [dislikedById], references: [id])
+  dislikedBy    User?      @relation("DislikedPosts", fields: [dislikedById], references: [id])
   dislikedById  String?
-  Subreddit     Subreddit @relation(fields: [subredditId], references: [id])
-  subredditId   String
+  subreddit     Subreddit? @relation(fields: [subredditId], references: [id])
+  subredditId   String?
 }
 
 model Subreddit {
   id      String  @id @default(cuid())
   name    String  @unique
   posts   Post[]
-  Topic   Topic?  @relation(fields: [topicId], references: [id])
+  topic   Topic?  @relation(fields: [topicId], references: [id])
   topicId String?
 }
 

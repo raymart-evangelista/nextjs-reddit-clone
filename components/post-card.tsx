@@ -13,13 +13,14 @@ import { useState } from "react"
 import { Post } from "../types/types"
 
 export default function PostCard({ post }: Post) {
+  console.log(post.author)
   const session = useSession()
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
   
   function toSubreddit(e: any) {
     e.stopPropagation()
-    Router.push("/r/subredditName", `/r/${post.subreddit}`)
+    Router.push("/r/subredditName", `/r/${post.subreddit.name}`)
     // Router.push("r/[subredditName]", `r/${post.subreddit}`)
   }
 
@@ -68,7 +69,7 @@ export default function PostCard({ post }: Post) {
                 className="font-bold text-xs hover:underline hover:cursor-pointer"
                 onClick={(e) => toSubreddit(e)}
               >
-                r/{post.subreddit}
+                r/{post.subreddit.name}
               </div>
             )}
             {post.createdAt === post.updatedAt ? (
@@ -101,7 +102,7 @@ export default function PostCard({ post }: Post) {
         <div className="bottom content of main area">
           {/* <h1 className="text-xl font-semibold ml-2 mb-2">These guys take zero Ws, they are Illiams now</h1> */}
           <Link 
-            href={{pathname: `/r/${post.subreddit}/comments/${post.id}`}}
+            href={{pathname: `/r/${post.subreddit.name}/comments/${post.id}`}}
             className="text-xl font-semibold ml-2 mb-2 hover:underline"
           >
             {post?.title}

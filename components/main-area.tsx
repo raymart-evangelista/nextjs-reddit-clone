@@ -53,15 +53,29 @@ export default function MainArea({ posts }: PostsListProps) {
           </>
         )}
         <div className="flex flex-col gap-2 justify-center items-center mt-4 mb-8">
-          {/* {posts.map((post) => (
-            <div key={post.id}>
-              <PostCard post={post} />
-            </div>
-          ))} */}
           {posts?.map((post) => {
+            const postStuff = {
+              id: post.id, 
+              title: post.title, 
+              description: post.description, 
+              totalLikes: post.totalLikes,
+              totalDislikes: post.totalDislikes,
+              totalComments: post.totalComments,
+              createdAt: post.createdAt,
+              updatedAt: post.updatedAt,
+              author: post.author,
+              subreddit: post.subreddit
+            }
+            const subredditStuff = {
+              id: post.subreddit.id,
+              name: post.subreddit.name
+            }
+            const topicStuff = {
+
+            }
             return (
               <div key={post.id}>
-                <PostCard post={post} />
+                <PostCard post={postStuff} />
               </div>
             )
           })}

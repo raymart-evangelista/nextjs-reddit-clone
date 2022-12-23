@@ -9,7 +9,7 @@ export type PostProps = {
   id: number
   title: string
   description: string
-  subreddit: string
+  subreddit: SubredditProps
   totalLikes: number
   totalDislikes: number
   totalComments: number
@@ -37,6 +37,11 @@ export type User = {
   user: UserProps
 }
 
+export type SubredditProps = {
+  id: string
+  name: string
+  topicId: string
+}
 // export type PostPropsRefactored = {
 //   post: {
 //     id: number
