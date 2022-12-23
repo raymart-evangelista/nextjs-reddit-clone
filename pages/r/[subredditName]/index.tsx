@@ -30,8 +30,7 @@ export default function Subreddit({posts}: PostsListProps) {
   const subredditName = router.query.subredditName
   return (
     <div className="h-full">
-      <Header>
-      </Header>
+      <Header />
       <div className="fixed top-12 h-full flex overflow-hidden">
         <Aside />
         <MainArea posts={posts} />
