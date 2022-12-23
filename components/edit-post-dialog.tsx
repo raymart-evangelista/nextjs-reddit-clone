@@ -3,11 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
-import { PostProps } from '../types/types'
-
-type Post = {
-  post: PostProps
-}
+import { Post } from '../types/types'
 
 export default function EditPostDialog({post}: Post) {
 

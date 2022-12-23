@@ -10,11 +10,7 @@ import { useSession } from "next-auth/react"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
 import { useState } from "react"
-import { PostProps } from "../types/types"
-
-type Post = {
-  post: PostProps
-}
+import { Post } from "../types/types"
 
 export default function PostCard({ post }: Post) {
   const session = useSession()

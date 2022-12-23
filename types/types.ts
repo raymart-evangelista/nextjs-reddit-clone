@@ -30,6 +30,9 @@ export type PostsListProps = {
   posts: PostProps[],
 }
 
+export type Post = {
+  post: PostProps
+}
 
 // export type PostsListProps = {
 //   posts: {

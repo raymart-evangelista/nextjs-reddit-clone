@@ -6,7 +6,7 @@ import Router from "next/router"
 import axios from "axios"
 import React from "react"
 import EditPostDialog from "../../../../components/edit-post-dialog"
-import { PostProps } from "../../../../types/types"
+import { Post } from "../../../../types/types"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const post = await prisma.post.findUnique({
@@ -30,10 +30,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 //   // console.log(`res.data: ${res.data}`)
 //   // Router.push('/')
 // }
-
-type Post = {
-  post: PostProps
-}
 
 export default function PostDetails({post}: Post) {
   const session = useSession()
