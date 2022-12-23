@@ -16,7 +16,7 @@ export default function EditPostDialog({post}: Post) {
   console.log(`post.title: ${post.title}`)
   console.log(`title: ${title}`)
   const [newDescription, setNewDescription] = useState(post.description)
-  const [subreddit, setSubreddit] = useState(post.subreddit)
+  const [subreddit, setSubreddit] = useState(post.subreddit.name)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
