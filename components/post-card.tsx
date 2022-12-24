@@ -11,6 +11,7 @@ import Link from "next/link"
 import Router, { useRouter } from "next/router"
 import { useState } from "react"
 import { Post } from "../types/types"
+import axios from "axios"
 
 export default function PostCard({ post }: Post) {
   console.log(post.author)
@@ -29,12 +30,13 @@ export default function PostCard({ post }: Post) {
     Router.push("/user/username", `/user/${post.author.username}`)
   }
 
-  function upVote() {
-
+  async function upVote() {
+    // const res = await axios.
+    // send to backend the liked post and to upvote the post
   }
 
-  function downVote() {
-
+  async function downVote() {
+    // sedn to backend the dislike post and to downvote the post
   }
 
   function toComments() {
@@ -56,9 +58,13 @@ export default function PostCard({ post }: Post) {
     >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
         <div className="flex flex-col gap-1 items-center">
-          <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-orange-500 hover:cursor-pointer" />
+          <button onClick={() => upVote}>
+            <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-orange-500 hover:cursor-pointer" />
+          </button>
           <p className="font-semibold text-xs">{post?.totalLikes}</p>
-          <ArrowDownSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-blue-500 hover:cursor-pointer" />
+          <button onClick={() => downVote}>
+            <ArrowDownSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-blue-500 hover:cursor-pointer" />
+          </button>
         </div>
       </div>
       <div className="main-content bg-white w-full rounded-tr-lg rounded-br-lg">

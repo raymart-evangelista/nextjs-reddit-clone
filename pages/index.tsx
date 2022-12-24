@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Popular from './r/popular'
 import { prisma } from '../server/db/client'
 import { PostsListProps } from '../types/types'
+import Header from '../components/header'
 
 export async function getServerSideProps() {
   const posts = await prisma.post.findMany({
