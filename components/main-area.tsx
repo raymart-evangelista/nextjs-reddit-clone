@@ -67,8 +67,8 @@ export default function MainArea({ posts }: PostsListProps) {
               subreddit: post.subreddit
             }
             const subredditStuff = {
-              id: post.subreddit.id,
-              name: post.subreddit.name
+              id: post.subreddit?.id,
+              name: post.subreddit?.name
             }
             const topicStuff = {
 

@@ -13,8 +13,6 @@ export default function EditPostDialog({post}: Post) {
   let [isOpen, setIsOpen] = useState(false)
   const [title, setTitle] = useState(post.title)
   const postId = post.id
-  console.log(`post.title: ${post.title}`)
-  console.log(`title: ${title}`)
   const [newDescription, setNewDescription] = useState(post.description)
   const [subreddit, setSubreddit] = useState(post.subreddit.name)
 

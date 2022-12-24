@@ -99,10 +99,10 @@ export default function PostCard({ post }: Post) {
             </Link>
           }
         </div>
-        <div className="bottom content of main area">
+        <div className="bottom content of main area m-2">
           {/* <h1 className="text-xl font-semibold ml-2 mb-2">These guys take zero Ws, they are Illiams now</h1> */}
           <Link 
-            href={{pathname: `/r/${post.subreddit.name}/comments/${post.id}`}}
+            href={{pathname: `/r/${post.subreddit?.name}/comments/${post.id}`}}
             className="text-xl font-semibold ml-2 mb-2 hover:underline"
           >
             {post?.title}

@@ -152,10 +152,33 @@ const userData: Prisma.UserCreateInput[] = [
         }
       ]
     },
+  },
+  {
+    id: 'user2',
+    name: 'Doja Cat',
+    username: 'dojacat',
+    createdPosts: {
+      create: [
+        {
+          title: 'This is Doja Cat, AMA! Ask me anything related to my music, my current album (Planet Her, out now!)',
+          description: 'Will be answering questions for about two hours. I will try my best to get to everyone.. Sorry if I do not get to you..',
+          subredditId: 'subreddit12'
+        },
+        {
+          title: "WDYWT: My outfit from today's concert was pretty fire. What do you guys think?",
+          description: "Was really feeling it when I performed 'Get Into It (Yuh)'",
+          subredditId: 'subreddit17'
+        }
+      ]
+    }
   }
 ]
 
 async function main() {
+  console.log(`***** Deleting previous data... *****`)
+  await prisma.topic.deleteMany()
+  await prisma.user.deleteMany()
+
   console.log(`***** Start Seeding... *****`)
   for (const t of topicData) {
     const topic = await prisma.topic.create({
