@@ -21,10 +21,8 @@ model Post {
   updatedAt     DateTime   @updatedAt
   author        User?      @relation("CreatedPosts", fields: [authorId], references: [id])
   authorId      String?
-  likedBy       User?      @relation("LikedPosts", fields: [likedById], references: [id])
-  likedById     String?
-  dislikedBy    User?      @relation("DislikedPosts", fields: [dislikedById], references: [id])
-  dislikedById  String?
+  likedBy       User[]     @relation("LikedPosts")
+  dislikedBy    User[]     @relation("DislikedPosts")
   subreddit     Subreddit? @relation(fields: [subredditId], references: [id])
   subredditId   String?
 }
