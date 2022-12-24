@@ -2,6 +2,8 @@ export type SvgProps = {
   width?: string
   height?: string
   viewBox?: string
+  fill?: string
+  stroke?: string
   className?: string
 }
 

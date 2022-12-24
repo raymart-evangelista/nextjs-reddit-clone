@@ -10,6 +10,16 @@ export async function getServerSideProps() {
     include: {
       author: true,
       subreddit: true,
+      likedBy: {
+        select: {
+          email: true,
+        }
+      },
+      dislikedBy: {
+        select: {
+          email: true,
+        }
+      },
     },
     orderBy: [
       {
