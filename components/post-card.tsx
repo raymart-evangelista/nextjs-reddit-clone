@@ -9,13 +9,28 @@ import moment from "moment"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Post } from "../types/types"
 import axios from "axios"
 
 export default function PostCard({ post }: Post) {
   const session = useSession()
   console.log(post)
+
+  const [userLikedPost, setUserLikedPost] = useState(false)
+  const [userDislikedPost, setUserDislikedPost] = useState(false)
+
+
+
+  useEffect(() => {
+    if (session.status === 'authenticated') {
+      console.log('********** post.likedBy ')
+      console.log(post.likedBy.find(elem => elem.email === session.data.user.email))
+      if (post.likedBy.find(elem => elem.email === session.data.user.email)) {
+        setUserLikedPost(true)
+      }
+    }
+  })
 
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
@@ -75,9 +90,9 @@ export default function PostCard({ post }: Post) {
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
         <div className="flex flex-col gap-1 items-center">
           <button onClick={upVote}>
-            <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className={`${session.status === 'authenticated' ? '' : ''} hover:text-orange-500 hover:cursor-pointer`} />
+            <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className={`${userLikedPost ? 'text-orange-500' : ''} hover:text-orange-500 hover:cursor-pointer`} />
           </button>
-          <p className="font-semibold text-xs">{post?.totalLikes}</p>
+          <p className="font-semibold text-xs">{post?.totalLikes - post?.totalDislikes}</p>
           <button onClick={downVote}>
             <ArrowDownSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-blue-500 hover:cursor-pointer" />
           </button>

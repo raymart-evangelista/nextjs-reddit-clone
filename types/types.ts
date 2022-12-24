@@ -18,6 +18,8 @@ export type PostProps = {
   createdAt: Date
   updatedAt: Date
   author: UserProps
+  likedBy: UserProps[]
+  dislikedBy: UserProps[]
 }
 
 export type Post = {
