@@ -135,8 +135,16 @@ export default function PostCard({ post }: Post) {
 
       // do stuff when post is already disliked by user and is pressing upvoting button
       // [ user wants to undo their dislike and do their like ]
-      if (!dbLiked && dbDisliked) {
-
+      if (dbLiked && !dbDisliked) {
+        // undo their like
+        await axios.put('/api/undoPostLike', { post, currentUserEmail} )
+        // front end work
+        setDbLiked(false)
+        post.likedBy = post.likedBy.filter((elem) => elem.email !== session.data.user.email)
+        // do their dislike
+        await axios.put('/api/dislikePost', { post, currentUserEmail })
+        setDbDisliked(true)
+        setLikesCount(likesCount - 2)
       }
     }
   }
