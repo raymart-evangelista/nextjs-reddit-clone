@@ -62,8 +62,6 @@ export default function PostCard({ post }: Post) {
 
     if (session.status === 'authenticated') {
       const currentUserEmail = session.data.user.email
-
-
       // do stuff when post is already liked by user and is pressing upvoting button
       // [ user wants to undo their like ]
       if (dbLiked) {
@@ -81,7 +79,7 @@ export default function PostCard({ post }: Post) {
       // do stuff when post isn't like/disliked yet by user and is pressing upvoting button
       // [ user wants to do their like ]
       if (!dbLiked && !dbDisliked) {
-        const res = await axios.put('/api/likedPosts', { post, currentUserEmail })
+        const res = await axios.put('/api/likePost', { post, currentUserEmail })
         console.log(`res: ${res}`)
         console.log(`res.data: ${res.data}`)
         setDbLiked(true)
@@ -91,7 +89,7 @@ export default function PostCard({ post }: Post) {
       // do stuff when post is already disliked by user and is pressing upvoting button
       // [ user wants to undo their dislike and do their like ]
       if (!dbLiked && dbDisliked) {
-
+        
       }
     }
   }
@@ -104,7 +102,36 @@ export default function PostCard({ post }: Post) {
     }
 
     if (session.status === 'authenticated') {
-      setLikesCount(likesCount - 1)
+      const currentUserEmail = session.data.user.email
+      // do stuff when post is already disliked by user and is pressing downvote button
+      // [ user wants to undo their dislike ]
+      if (dbDisliked) {
+        // backend work
+        const res = await axios.put('/api/undoPostDislike', { post, currentUserEmail} )
+        // front end work
+        setDbDisliked(false)
+        setLikesCount(likesCount + 1)
+        console.log(post.dislikedBy)
+        // the next line of code fixed the decrementing issue when continuously pressing upvote
+        post.dislikedBy = post.dislikedBy.filter((elem) => elem.email !== session.data.user.email)
+        console.log(post.dislikedBy)
+      }
+
+      // do stuff when post isn't like/disliked yet by user and is pressing downvote button
+      // [ user wants to do their dislike ]
+      if (!dbLiked && !dbDisliked) {
+        const res = await axios.put('/api/dislikePost', { post, currentUserEmail })
+        console.log(`res: ${res}`)
+        console.log(`res.data: ${res.data}`)
+        setDbDisliked(true)
+        setLikesCount(likesCount - 1)
+      }
+
+      // do stuff when post is already disliked by user and is pressing upvoting button
+      // [ user wants to undo their dislike and do their like ]
+      if (!dbLiked && dbDisliked) {
+
+      }
     }
   }
 
