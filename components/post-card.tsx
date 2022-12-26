@@ -112,7 +112,6 @@ export default function PostCard({ post }: Post) {
         setDbDisliked(false)
         setLikesCount(likesCount + 1)
         console.log(post.dislikedBy)
-        // the next line of code fixed the decrementing issue when continuously pressing upvote
         post.dislikedBy = post.dislikedBy.filter((elem) => elem.email !== session.data.user.email)
         console.log(post.dislikedBy)
       }
