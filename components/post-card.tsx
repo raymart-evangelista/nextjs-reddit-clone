@@ -17,23 +17,29 @@ export default function PostCard({ post }: Post) {
   const session = useSession()
   console.log(post)
 
-  const [userLikedPost, setUserLikedPost] = useState(false)
-  const [userDislikedPost, setUserDislikedPost] = useState(false)
-
-
-
-  useEffect(() => {
-    if (session.status === 'authenticated') {
-      console.log('********** post.likedBy ')
-      console.log(post.likedBy.find(elem => elem.email === session.data.user.email))
-      if (post.likedBy.find(elem => elem.email === session.data.user.email)) {
-        setUserLikedPost(true)
-      }
-    }
-  })
+  const [dbLiked, setDbLiked] = useState(false)
+  const [dbDisliked, setDbDisliked] = useState(false)
+  const [likesCount, setLikesCount] = useState(post.totalLikes - post.totalDislikes)
+  const [upvoteClicked, setUpvoteClicked] = useState(false)
+  const [downvoteClicked, setDownvoteClicked] = useState(false)
 
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
+
+  function upvoteAlreadyChosen() {
+    // if the backend states that the user already upvoted this post..
+    // upvoteClicked = true, so if they click upvote again, they remove their like, or
+    // if they click downvote, their upvote is removed and downvoteClicked = true
+
+
+  }
+
+  function downvoteAlreadyChosen() {
+    // if the backend states that the user already downvoted this post..
+    // downvoteClicked = false, so if they click downvote again, they remove their dislike, or
+    // if they click upvote, their downvote is removed and upvoteClicked = true
+
+  }
   
   function toSubreddit(e: any) {
     e.stopPropagation()
@@ -46,7 +52,7 @@ export default function PostCard({ post }: Post) {
     Router.push("/user/username", `/user/${post.author.username}`)
   }
 
-  async function upVote() {
+  async function handleUpvoteClick() {
     // the Post model will have a new totalLikes number, 
     // the Post model will add the current user to the likedBy User array
     if (session.status === 'unauthenticated') {
@@ -56,17 +62,44 @@ export default function PostCard({ post }: Post) {
 
     if (session.status === 'authenticated') {
       const currentUserEmail = session.data.user.email
-      const res = await axios.put('/api/likedPosts', { post, currentUserEmail })
-      console.log(`res: ${res}`)
-      console.log(`res.data: ${res.data}`)
+
+
+      // do stuff when post is already liked by user and is pressing upvoting button
+      // [ user wants to undo their like ]
+      if (dbLiked) {
+        // backend work
+        const res = await axios.put('/api/undoPostLike', { post, currentUserEmail} )
+        setDbLiked(false)
+        // front end work
+        setLikesCount(likesCount - 1)
+
+      }
+
+      // do stuff when post isn't like/disliked yet by user and is pressing upvoting button
+      // [ user wants to do their like ]
+      if (!dbLiked && !dbDisliked) {
+        const res = await axios.put('/api/likedPosts', { post, currentUserEmail })
+        console.log(`res: ${res}`)
+        console.log(`res.data: ${res.data}`)
+      }
+
+      // do stuff when post is already disliked by user and is pressing upvoting button
+      // [ user wants to undo their dislike and do their like ]
+      if (!dbLiked && dbDisliked) {
+
+      }
     }
   }
 
-  async function downVote() {
+  async function handleDownvoteClick() {
     // sedn to backend the dislike post and to downvote the post
     if (session.status === 'unauthenticated') {
       console.log('unauthenticated..')
       router.push('/api/auth/signin')
+    }
+
+    if (session.status === 'authenticated') {
+      setLikesCount(likesCount - 1)
     }
   }
 
@@ -82,6 +115,22 @@ export default function PostCard({ post }: Post) {
 
   }
 
+  useEffect(() => {
+    if (session.status === 'authenticated') {
+      console.log('********** post.likedBy ')
+      // console.log(post.likedBy.find(elem => elem.email === session.data.user.email))
+      if (post.likedBy.find(elem => elem.email === session.data.user.email)) {
+        setUpvoteClicked(true)
+        setDbLiked(true)
+      }
+      if (post.dislikedBy.find(elem => elem.email === session.data.user.email)) {
+        setDownvoteClicked(true)
+        setDbDisliked(true)
+      }
+    }
+  })
+
+
   return (
     <div
       // href={{pathname: `/r/${post.subreddit}/comments/${post.id}`}}
@@ -89,11 +138,11 @@ export default function PostCard({ post }: Post) {
     >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
         <div className="flex flex-col gap-1 items-center">
-          <button onClick={upVote}>
-            <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className={`${userLikedPost ? 'text-orange-500' : ''} hover:text-orange-500 hover:cursor-pointer`} />
+          <button onClick={handleUpvoteClick}>
+            <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className={`${dbLiked ? 'text-orange-500' : ''} hover:text-orange-500 hover:cursor-pointer`} />
           </button>
-          <p className="font-semibold text-xs">{post?.totalLikes - post?.totalDislikes}</p>
-          <button onClick={downVote}>
+          <p className="font-semibold text-xs">{likesCount}</p>
+          <button onClick={handleDownvoteClick}>
             <ArrowDownSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-blue-500 hover:cursor-pointer" />
           </button>
         </div>
