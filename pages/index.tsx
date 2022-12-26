@@ -23,7 +23,7 @@ export async function getServerSideProps() {
     },
     orderBy: [
       {
-        createdAt: 'desc',
+        id: 'desc',
       }
     ]
   })

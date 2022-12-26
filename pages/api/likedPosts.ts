@@ -31,6 +31,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
               }
             }
           })
+          console.log('&&& post was upvoted &&&')
           res.status(201).json(updatePost)
           break
         }

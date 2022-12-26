@@ -15,13 +15,13 @@ import axios from "axios"
 
 export default function PostCard({ post }: Post) {
   const session = useSession()
-  console.log(post)
+  // console.log(post)
 
   const [dbLiked, setDbLiked] = useState(false)
   const [dbDisliked, setDbDisliked] = useState(false)
   const [likesCount, setLikesCount] = useState(post.totalLikes - post.totalDislikes)
-  const [upvoteClicked, setUpvoteClicked] = useState(false)
-  const [downvoteClicked, setDownvoteClicked] = useState(false)
+  const [upvoteDisabled, setUpvoteDisabled] = useState(false)
+  const [downvoteDisabled, setDownvoteDisabled] = useState(false)
 
   const router = useRouter()
   const [inSubreddit, setInSubreddt] = useState(router.pathname === '/r/[subredditName]')
@@ -69,10 +69,12 @@ export default function PostCard({ post }: Post) {
       if (dbLiked) {
         // backend work
         const res = await axios.put('/api/undoPostLike', { post, currentUserEmail} )
-        setDbLiked(false)
         // front end work
+        setDbLiked(false)
         setLikesCount(likesCount - 1)
-
+        console.log(post.likedBy)
+        post.likedBy = post.likedBy.filter((elem) => elem.email !== session.data.user.email)
+        console.log(post.likedBy)
       }
 
       // do stuff when post isn't like/disliked yet by user and is pressing upvoting button
@@ -81,6 +83,8 @@ export default function PostCard({ post }: Post) {
         const res = await axios.put('/api/likedPosts', { post, currentUserEmail })
         console.log(`res: ${res}`)
         console.log(`res.data: ${res.data}`)
+        setDbLiked(true)
+        setLikesCount(likesCount + 1)
       }
 
       // do stuff when post is already disliked by user and is pressing upvoting button
@@ -120,11 +124,9 @@ export default function PostCard({ post }: Post) {
       console.log('********** post.likedBy ')
       // console.log(post.likedBy.find(elem => elem.email === session.data.user.email))
       if (post.likedBy.find(elem => elem.email === session.data.user.email)) {
-        setUpvoteClicked(true)
         setDbLiked(true)
       }
       if (post.dislikedBy.find(elem => elem.email === session.data.user.email)) {
-        setDownvoteClicked(true)
         setDbDisliked(true)
       }
     }
@@ -138,12 +140,12 @@ export default function PostCard({ post }: Post) {
     >
       <div className="arrows-area w-fit flex flex-col items-center p-2 pt-3">
         <div className="flex flex-col gap-1 items-center">
-          <button onClick={handleUpvoteClick}>
-            <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className={`${dbLiked ? 'text-orange-500' : ''} hover:text-orange-500 hover:cursor-pointer`} />
+          <button onClick={handleUpvoteClick} disabled={upvoteDisabled}>
+            <ArrowUpSquareSvg width="1.2rem" viewBox="0 0 16 16" className={`${dbLiked ? 'text-orange-500' : 'text-black'} hover:text-orange-500 hover:cursor-pointer`} />
           </button>
           <p className="font-semibold text-xs">{likesCount}</p>
-          <button onClick={handleDownvoteClick}>
-            <ArrowDownSquareSvg width="1.2rem" viewBox="0 0 16 16" className="hover:text-blue-500 hover:cursor-pointer" />
+          <button onClick={handleDownvoteClick} disabled={downvoteDisabled}>
+            <ArrowDownSquareSvg width="1.2rem" viewBox="0 0 16 16" className={`${dbDisliked ? 'text-blue-500' : 'text-black'} hover:text-blue-500 hover:cursor-pointer`} />
           </button>
         </div>
       </div>
@@ -158,26 +160,14 @@ export default function PostCard({ post }: Post) {
                 r/{post.subreddit.name}
               </div>
             )}
-            {post.createdAt === post.updatedAt ? (
-              <div className="text-gray-400 text-xs flex gap-1">Posted by
-                <div 
-                  className="hover:underline hover:cursor-pointer"
-                  onClick={(e) => toUser(e)}>
-                  u/{post.author.username}
-                </div>
-                {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}
-              </div>
-            ) : (
-              <div className="text-gray-400 text-xs flex gap-1">Edited by
+            <div className="text-gray-400 text-xs flex gap-1">Posted by
               <div 
                 className="hover:underline hover:cursor-pointer"
                 onClick={(e) => toUser(e)}>
                 u/{post.author.username}
               </div>
-              {moment.utc(post?.updatedAt).local().startOf('seconds').fromNow()}
+              {moment.utc(post?.createdAt).local().startOf('seconds').fromNow()}
             </div>
-            )
-            }
           </div>
           {session.status === 'unauthenticated' && 
             <Link href='/api/auth/signin'>

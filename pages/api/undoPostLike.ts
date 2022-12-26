@@ -13,7 +13,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       {
         // update the Post totalLikes
         const { post, currentUserEmail } = req.body
-        // get the current session user
+        // get the current session user        
         const user = await prisma.user.findUnique({
           where: {
             email: currentUserEmail
@@ -24,7 +24,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         console.log(likedBy)
 
 // post.likedBy.find(elem => elem.email === session.data.user.email
-
 
         if (user) {
           const updatePost = await prisma.post.update({
@@ -38,6 +37,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
               }
             }
           })
+          console.log('&&& post was unliked &&&')
           res.status(201).json(updatePost)
           break
         }
