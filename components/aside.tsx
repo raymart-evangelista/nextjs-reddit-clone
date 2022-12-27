@@ -11,10 +11,11 @@ import ThreeDotsSvg from './svg/three-dots'
 import Button from './button'
 import ChevronDownOutlineSvg from './svg/chevron-down-outline'
 import styles from './aside.module.css'
-
+import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 export default function Aside() {
-
+  const session = useSession()
   const topicsClass = 'text-gray-500 font-bold text-sm p-4'
 
   return (
@@ -94,10 +95,15 @@ export default function Aside() {
               <ChevronDownOutlineSvg />
             </div>
           </div>
-          <div className="flex flex-col border-t-[1px] m-8 gap-4">
-            <h1 className='mt-4 text-sm font-[350]'>Create an account to follow your favorite communities and start taking part in conversations.</h1>
-            <Button text="Join Reddit" bgColor="bg-reddit-button-blue" textColor="text-white"/>
-          </div>
+            {session.status === 'authenticated' ? (
+              ''
+              ) : (
+              <div className="flex flex-col border-t-[1px] m-8 gap-4">
+                <h1 className='mt-4 text-sm font-[350]'>Create an account to follow your favorite communities and start taking part in conversations.</h1>
+                  <Button text="Join Reddit" bgColor="bg-reddit-button-blue" textColor="text-white" link="/api/auth/signin" />
+              </div>
+            )
+            }
         </div>
       </div>
     </div>
