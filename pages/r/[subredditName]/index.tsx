@@ -23,7 +23,17 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
           id: true,
           name: true,
         }
-      }
+      },
+      likedBy: {
+        select: {
+          email: true,
+        }
+      },
+      dislikedBy: {
+        select: {
+          email: true,
+        }
+      },
     },
     orderBy: {
       createdAt: 'desc'
