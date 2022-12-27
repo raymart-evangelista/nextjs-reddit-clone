@@ -3,7 +3,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { UserProps } from "../../types/types";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  console.log('inside handler')
   const { method } = req
   switch (method) {
     case 'PUT':
@@ -31,7 +30,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
               }
             }
           })
-          console.log('&&& post was un-disliked &&&')
           res.status(201).json(updatePost)
           break
         }

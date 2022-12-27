@@ -22,6 +22,7 @@
   - [Sam Meech-Ward: Youtube guide](https://www.youtube.com/watch?v=8DiT-LdYXC0)
   - [Sam Meech-Ward: Text guide](https://www.sammeechward.com/prisma-and-nextjs)
   - [Web Dev Simplified: Learn Prisma in 60 Minutes](https://www.youtube.com/watch?v=RebA5J-rlwg)
+  - [splicing object from prisma model array](https://stackoverflow.com/questions/69364443/prisma-splice-item-from-array)
 
 - NextAuth
   - [Code Commerce: Sign In With Google](https://www.youtube.com/watch?v=A5ZN--P9vXM&list=LL&index=2)

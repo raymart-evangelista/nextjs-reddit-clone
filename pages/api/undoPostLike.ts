@@ -1,13 +1,9 @@
 import { prisma } from "../../server/db/client";
-
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
 import { UserProps } from "../../types/types";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  console.log('inside handler')
   const { method } = req
-
   switch (method) {
     case 'PUT':
       {
@@ -22,8 +18,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         // get the array of users who liked the post
         const likedBy = post.likedBy
         console.log(likedBy)
-
-// post.likedBy.find(elem => elem.email === session.data.user.email
 
         if (user) {
           const updatePost = await prisma.post.update({
@@ -41,10 +35,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
           res.status(201).json(updatePost)
           break
         }
-
-        // update the Post likedBy
-        // console.log(post)
-        // console.log(currentUserEmail)
       }
   }
 }
