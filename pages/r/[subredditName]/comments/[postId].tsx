@@ -17,6 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     include: {
       author: true,
       subreddit: true,
+      comments: true
     }
   })
   return {
