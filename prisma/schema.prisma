@@ -25,6 +25,48 @@ model Post {
   dislikedBy    User[]     @relation("DislikedPosts")
   subreddit     Subreddit? @relation(fields: [subredditId], references: [id])
   subredditId   String?
+  comments      Comment[]
+}
+
+model Comment {
+  id        String    @id @default(cuid())
+  message   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    Int
+  parent    Comment?  @relation("ParentChild", fields: [parentId], references: [id], onDelete: Cascade)
+  children  Comment[] @relation("ParentChild")
+  parentId  String?
+  likes     Like[]
+}
+
+model Like {
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comment   Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  userId    String
+  commentId String
+
+  // ensures you can't leave two likes on same comment if same user
+  @@id([userId, commentId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  username      String?   @unique
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  createdPosts  Post[]    @relation("CreatedPosts")
+  likedPosts    Post[]    @relation("LikedPosts")
+  dislikedPosts Post[]    @relation("DislikedPosts")
+  comments      Comment[]
+  likes         Like[]
 }
 
 model Subreddit {
@@ -66,20 +108,6 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  username      String?   @unique
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  createdPosts  Post[]    @relation("CreatedPosts")
-  likedPosts    Post[]    @relation("LikedPosts")
-  dislikedPosts Post[]    @relation("DislikedPosts")
 }
 
 model VerificationToken {

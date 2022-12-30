@@ -146,6 +146,7 @@ const userData: Prisma.UserCreateInput[] = [
     createdPosts: {
       create: [
         {
+          id: 1,
           title: 'I am new to Genshin Impact, does anyone know what this is?',
           description: 'It seems to look like a floating circle. Do not touch it!',
           subredditId: 'subreddit1'
@@ -153,25 +154,25 @@ const userData: Prisma.UserCreateInput[] = [
       ]
     },
   },
-  {
-    id: 'user2',
-    name: 'Doja Cat',
-    username: 'dojacat',
-    createdPosts: {
-      create: [
-        {
-          title: 'This is Doja Cat, AMA! Ask me anything related to my music, my current album (Planet Her, out now!)',
-          description: 'Will be answering questions for about two hours. I will try my best to get to everyone.. Sorry if I do not get to you..',
-          subredditId: 'subreddit12'
-        },
-        {
-          title: "WDYWT: My outfit from today's concert was pretty fire. What do you guys think?",
-          description: "Was really feeling it when I performed 'Get Into It (Yuh)'",
-          subredditId: 'subreddit17'
-        }
-      ]
-    }
-  }
+  // {
+  //   id: 'user2',
+  //   name: 'Doja Cat',
+  //   username: 'dojacat',
+  //   createdPosts: {
+  //     create: [
+  //       {
+  //         title: 'This is Doja Cat, AMA! Ask me anything related to my music, my current album (Planet Her, out now!)',
+  //         description: 'Will be answering questions for about two hours. I will try my best to get to everyone.. Sorry if I do not get to you..',
+  //         subredditId: 'subreddit12'
+  //       },
+  //       {
+  //         title: "WDYWT: My outfit from today's concert was pretty fire. What do you guys think?",
+  //         description: "Was really feeling it when I performed 'Get Into It (Yuh)'",
+  //         subredditId: 'subreddit17'
+  //       }
+  //     ]
+  //   }
+  // }
 ]
 
 async function main() {
@@ -186,12 +187,78 @@ async function main() {
     })
     console.log(`Created topic with id: ${topic.id}`)
   }
-  for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u,
-    })
-    console.log(`Created user with id: ${user.id}`)
-  }
+  // for (const u of userData) {
+  //   const user = await prisma.user.create({
+  //     data: u,
+  //   })
+  //   console.log(`Created user with id: ${user.id}`)
+  // }
+  const raymart = await prisma.user.create({
+    data:  
+    {
+      name: 'Raymart Evangelista',
+      username: 'raymartevangelista',
+      createdPosts: {
+        create: [
+          {
+            id: 1,
+            title: 'I am new to Genshin Impact, does anyone know what this is?',
+            description: 'It seems to look like a floating circle. Do not touch it!',
+            subredditId: 'subreddit1'
+          }
+        ]
+      },
+    },
+  })
+  console.log(`Created user with id: ${raymart.id}`)
+
+  const kyle = await prisma.user.create({
+    data:  
+    {
+      name: 'Kyle',
+      username: 'kyle',
+      createdPosts: {
+        create: [
+          {
+            id: 2,
+            title: "WDYWT: My outfit from today's concert was pretty fire. What do you guys think?",
+            description: "Was really feeling it when I performed 'Get Into It (Yuh)'",
+            subredditId: 'subreddit17'
+          }
+        ]
+      },
+    },
+  })
+  console.log(`Created user with id: ${kyle.id}`)
+
+  const comment1 = await prisma.comment.create({
+    data: {
+      message: 'I am a root comment',
+      userId: raymart.id,
+      postId: 1,
+    }
+  })
+  console.log(`Created comment with id: ${comment1.id}`)
+
+  const comment2 = await prisma.comment.create({
+    data: {
+      parentId: comment1.id,
+      message: 'I am a nested comment',
+      userId: kyle.id,
+      postId: 1,
+    }
+  })
+  console.log(`Created comment with id: ${comment2.id}`)
+
+  const comment3 = await prisma.comment.create({
+    data: {
+      message: 'I am another root comment',
+      userId: kyle.id,
+      postId: 1,
+    }
+  })
+  console.log(`Created comment with id: ${comment3.id}`)
+
   console.log(`***** Seeding Finished... *****`)
 }
 
