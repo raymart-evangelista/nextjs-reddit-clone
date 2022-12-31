@@ -20,6 +20,21 @@ export type PostProps = {
   author: UserProps
   likedBy: UserProps[]
   dislikedBy: UserProps[]
+  comments: CommentProps[]
+}
+
+export type CommentProps = {
+  id: string
+  message: string
+  createdAt: Date
+  updatedAt: Date
+  userId: string
+  postId: string
+  parentId: string
+}
+
+export type Comment = {
+  comment: CommentProps
 }
 
 export type Post = {

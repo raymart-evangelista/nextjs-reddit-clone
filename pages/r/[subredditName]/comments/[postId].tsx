@@ -4,10 +4,11 @@ import { useRouter } from "next/router"
 import { prisma } from "../../../../server/db/client"
 import Router from "next/router"
 import axios from "axios"
-import React from "react"
+import React, { useMemo } from "react"
 import EditPostDialog from "../../../../components/edit-post-dialog"
 import { Post } from "../../../../types/types"
 import Button from "../../../../components/button"
+import { group } from "console"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const post = await prisma.post.findUnique({
@@ -41,7 +42,17 @@ export default function PostDetails({post}: Post) {
   // console.log(session.data?.user.email)
   // console.log(props.post.author.email)
 
+  const commentsByParentId = useMemo(() => {
+    if(post.comments == null) return []
+    const group = {}
+    post.comments.forEach(comment => {
+      group[comment.parentId] ||= []
+      group[comment.parentId].push(comment)
+    })
+    return group
+  }, [post.comments])
   console.log(post)
+  console.log(commentsByParentId)
 
   const handleDelete = async (event: React.MouseEvent<HTMLButtonElement>) => {
     const res = await axios.delete('/api/posts', {data: post.id })
